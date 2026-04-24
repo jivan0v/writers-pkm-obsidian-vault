@@ -27,6 +27,11 @@ _media/
 # Claude Code local state
 .claude/
 
+# JetBrains/PyCharm — this repo isn't a Python project; if these
+# appear at the root, the IDE was pointed at the wrong folder.
+/.idea/
+/main.py
+
 # macOS system files
 .DS_Store
 **/.DS_Store
