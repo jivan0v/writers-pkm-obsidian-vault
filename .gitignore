@@ -4,6 +4,11 @@
 **/.obsidian/themes/
 **/.obsidian/workspace.json
 
+# Prevent accidentally opening the repo root as an Obsidian vault —
+# the real vault lives at Obsidian/Working Title/. A root-level
+# .obsidian/ means someone opened the wrong folder.
+/.obsidian/
+
 # Obsidian cache
 **/.keep-the-rhythm/
 
