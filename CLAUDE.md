@@ -43,6 +43,12 @@ A pipeline of five specialized writing skills. Invoke them with `/skillname`.
 
 **Atlas is the source of truth.** Warden, Quill, and Lens all read from the project's `_meta/atlas.md`. Retroactive facts Warden detects get queued back to Atlas.
 
+Outside the pipeline:
+
+| Skill | Command | Role |
+|---|---|---|
+| New Project | `/new-project` | Scaffolds a new project folder under `01_Projects/` from `templates/`. Run this once at the start of a novel or short story; not part of the editorial loop. |
+
 ## The `_meta/` convention
 
 Every project has a `_meta/` subfolder where the skills write their outputs (e.g. `_meta/atlas.md`, `_meta/status.md`, `_meta/warden/Chapter_03_warden.md`). These files are **agent-owned** — don't hand-edit them unless the user asks, because the next pipeline run will overwrite or conflict with your changes. If the user wants to change lore or continuity, the change belongs in the manuscript or in `Lore/`; Atlas picks it up from there.

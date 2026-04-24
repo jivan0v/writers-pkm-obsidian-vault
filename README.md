@@ -12,13 +12,14 @@ If you write novels or short stories — especially across multiple projects or 
 | `Obsidian/Working Title/00_Scratchpad/` | Raw ideas and story fragments (`Ideas/`, `Fragments/`). Fragments are prefixed with `SS_`. Nothing here is canon yet. |
 | `Obsidian/Working Title/01_Projects/` | Active writing projects. Each novel or story collection gets its own subfolder. Each novel gets a `Lore/` subfolder. |
 | `Obsidian/Working Title/02_Research/` | Research notes that feed any project. |
-| `_skill-sources/` | Editable source for the five core writing skills (one folder per skill, each with a `SKILL.md`). |
+| `_skill-sources/` | Editable source for the writing skills (one folder per skill, each with a `SKILL.md`). |
 | `*.skill` | Packaged (zipped) distributable versions of each skill, rebuilt from the sources. |
+| `templates/` | Optional-everything stub files (`_meta/`, `Lore/` notes) that `/new-project` copies when scaffolding a new project. |
 | `CLAUDE.md` | Instructions Claude Code reads at the start of every session — vault conventions and where you personalize voice/language preferences. |
 
 ## The skill pipeline
 
-Five Claude Code skills, each with a specific role. Invoke them with `/skillname`.
+Five Claude Code skills, each with a specific role in the editorial pipeline. Invoke them with `/skillname`.
 
 | Skill | Command | Role |
 |---|---|---|
@@ -29,6 +30,12 @@ Five Claude Code skills, each with a specific role. Invoke them with `/skillname
 | **Lens** | `/lens` | Fresh reader — clarity, pacing, emotional landing, what a first-time reader actually experiences |
 
 **Pipeline order:** Ledger → Atlas (once per project) → Warden → Quill → Lens (per file).
+
+A sixth skill sits outside the pipeline:
+
+| Skill | Command | Role |
+|---|---|---|
+| **New Project** | `/new-project` | Scaffolds a fresh project under `01_Projects/` from `templates/` — asks for title and type, creates `_meta/` (and `Lore/` for novels and collections), then hands off to `/atlas`. No prose, no plot — just folders. |
 
 ### How they fit together
 
@@ -50,7 +57,21 @@ Each project has a `_meta/` subfolder where all four non-Ledger skills write the
 
 2. **Open the vault in Obsidian.** Point Obsidian at `Obsidian/Working Title/` (or rename that folder first). The vault comes with sensible core plugins enabled and a few community plugins declared — Obsidian will prompt you to install them on first open.
 
-3. **Install the skills into Claude Code.** Copy the five skill folders from `_skill-sources/` into your Claude Code skills directory (typically `~/.claude/skills/`). Alternatively, use the packaged `.skill` archives if your setup consumes them. Restart Claude Code so it picks them up.
+3. **Install the skills into Claude Code.** Each skill is a folder under `_skill-sources/` containing a `SKILL.md`. Copy every folder into your Claude Code skills directory (`~/.claude/skills/`) and restart Claude Code so it picks them up:
+
+   ```bash
+   mkdir -p ~/.claude/skills
+   cp -r _skill-sources/ledger       ~/.claude/skills/
+   cp -r _skill-sources/atlas        ~/.claude/skills/
+   cp -r _skill-sources/warden       ~/.claude/skills/
+   cp -r _skill-sources/quill        ~/.claude/skills/
+   cp -r _skill-sources/lens         ~/.claude/skills/
+   cp -r _skill-sources/new-project  ~/.claude/skills/
+   ```
+
+   After restart, `/ledger`, `/atlas`, `/warden`, `/quill`, `/lens`, and `/new-project` will all be available.
+
+   > The `*.skill` files at the repo root are just zipped copies of those folders, provided for environments that distribute skills as single-file archives. If you're installing locally with Claude Code, prefer the folder copy above — the `.skill` archives are there for sharing.
 
 4. **Personalize `CLAUDE.md`.** Edit it to add language preferences, voice notes, or anything you want Claude to know before it touches your writing.
 
@@ -67,7 +88,9 @@ Each project has a `_meta/` subfolder where all four non-Ledger skills write the
 
 Most of the configuration lives in `CLAUDE.md`. A common edit is adding a `## Language` section describing your primary language so Quill and Lens know to expect translation-artifact phrasing, or a `## Voice` section describing the tone you want Claude to use when responding.
 
-The skills themselves are intentionally generic — if you want to adjust behavior (e.g. different severity thresholds, different output format), edit the corresponding `_skill-sources/<skill>/SKILL.md` and rebuild the `.skill` archive:
+The skills themselves are intentionally generic — if you want to adjust behavior (e.g. different severity thresholds, different output format), edit the corresponding `_skill-sources/<skill>/SKILL.md`. Re-run the `cp -r` from the install step above to push your edits into `~/.claude/skills/`.
+
+If you want to redistribute a modified skill, rebuild its `.skill` archive:
 
 ```bash
 cd _skill-sources
