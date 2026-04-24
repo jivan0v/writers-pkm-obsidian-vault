@@ -30,8 +30,6 @@ Five Claude Code skills, each with a specific role. Invoke them with `/skillname
 
 **Pipeline order:** Ledger → Atlas (once per project) → Warden → Quill → Lens (per file).
 
-A bonus skill `humanizer.skill` is also included — use it when you need to strip AI-sounding cadence from a passage.
-
 ### How they fit together
 
 - **Atlas** is the source of truth. Warden, Quill, and Lens all read from `_meta/atlas.md`.
