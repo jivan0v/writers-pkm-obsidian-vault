@@ -1,0 +1,27 @@
+# Obsidian — exclude plugin binaries and themes (large, reinstallable)
+# but keep core config files (app.json, community-plugins.json, etc.)
+**/.obsidian/plugins/
+**/.obsidian/themes/
+**/.obsidian/workspace.json
+
+# Obsidian cache
+**/.keep-the-rhythm/
+
+# Media & attachments — backed up via Google Drive instead
+attachments/
+_media/
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.pdf
+*.mp3
+*.mp4
+*.mov
+
+# Claude Code local state
+.claude/
+
+# macOS system files
+.DS_Store
+**/.DS_Store
