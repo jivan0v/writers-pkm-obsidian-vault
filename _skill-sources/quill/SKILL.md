@@ -32,6 +32,28 @@ Your output files go in `_meta/quill/` inside the project directory. File naming
 
 Read `_meta/atlas.md` — specifically the **Characters** section and each character's **Voice** profile and **Speech markers**. Quill uses these to catch moments where a character's dialogue or inner monologue doesn't match their established patterns.
 
+## Skip zones
+
+Writers can mark passages they want Quill to ignore — quoted source material, in-world documents, intentional sentence fragments, anything where Quill's normal checks would generate noise instead of signal.
+
+Three marker types (all HTML comments, so they render invisibly in Obsidian):
+
+| Marker pair | Honored by |
+|---|---|
+| `<!-- quill: skip-start -->` … `<!-- quill: skip-end -->` | Quill only. |
+| `<!-- warden: skip-start -->` … `<!-- warden: skip-end -->` | Warden only. |
+| `<!-- skip-start -->` … `<!-- skip-end -->` | Atlas, Quill, Warden. (Lens never skips — readers see whatever is on the page.) |
+
+For Quill, both `<!-- quill: skip ... -->` and the generic `<!-- skip ... -->` apply. Inside any skipped region, suspend **all** Quill checks: grammar, vocabulary, rhythm, show/tell, dialogue, voice, phrasing, vocabulary alternatives. The passage is off-limits.
+
+### Parsing rules
+
+1. **Place markers on their own line.** When a marker appears mid-paragraph, do your best — treat the paragraph as skipped from the start marker onward (or up to the end marker), but prefer paragraph-bounded skipping when reporting locations.
+2. **Match start to nearest end.** A `<!-- quill: skip-start -->` is closed by the first subsequent `<!-- quill: skip-end -->`. The generic `<!-- skip-start -->` is closed by the first subsequent `<!-- skip-end -->`. Different marker types do not interact.
+3. **Don't nest the same type.** A second start before its end is malformed.
+4. **Malformed markers (start with no end, or vice versa) — flag, don't fail.** Add a one-line note in the report: `Skip-zone parse: 1 unterminated start at Ch.3 ¶12 — review proceeded with that region not skipped.`
+5. **Report honored zones in the header.** Append `_Skip zones honored: N_` to the report header. Omit the line entirely when N is zero.
+
 ## Empty-Atlas fallbacks
 
 When Atlas has no data for something Quill would normally check, **say so in the report** rather than going silent. The writer should be able to tell the difference between "Quill checked and found nothing" and "Quill couldn't check because Atlas was empty."
@@ -129,6 +151,7 @@ Write your review to `_meta/quill/[filename]_quill.md`. Use the structure below.
 # Quill Review — [filename]
 _Date: [YYYY-MM-DD]_
 _Mode: drafting | balanced | polish (source: argument | pipeline | config | default)_
+_Skip zones honored: N_  ← omit this line when N is zero
 
 ---
 

@@ -76,6 +76,16 @@ When a character moves, update their entry in place. When a fact changes, update
 
 The one exception to "update in place": the Established Facts section tracks the review status of retroactive changes — that section grows over time as new facts are confirmed.
 
+## Skip zones (generic marker only)
+
+Atlas honors **only** the generic skip marker `<!-- skip-start -->` … `<!-- skip-end -->`. The skill-specific markers (`<!-- quill: skip ... -->`, `<!-- warden: skip ... -->`) do not affect Atlas.
+
+Inside a generic skip zone, do not record any new fact, character, location, world rule, or established fact, and do not derive provisional voice from dialogue inside the zone. The passage is treated as not-yet-canon — typically the writer is using it for an in-world document, an unreliable narrator's account, or deliberately false claims.
+
+Parsing rules match Quill / Warden: markers on their own line, nearest-match start-to-end, no nesting of the same type. Malformed markers — flag in the session entry of `atlas_history.md` (`Skip-zone parse: 1 unterminated start at Chapter_03.md ¶12`), do not fail. Record the count of honored zones in the same `atlas_history.md` entry: `Skip zones honored: N`.
+
+Lens never skips. Readers see whatever is on the page, including in-world documents.
+
 ## Provisional entries and empty fields
 
 Atlas is writer-led — fields stay empty when the writer hasn't established anything yet. **Empty is fine.** Don't invent. Don't extrapolate. Consumer skills (Quill, Warden, Lens) handle empty-Atlas fallbacks within their own outputs; Atlas's job is to honestly reflect what's on the page.

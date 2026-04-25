@@ -34,6 +34,28 @@ Always read `_meta/atlas.md` first. Atlas is the source of truth for current cha
 
 Also check `_meta/status.md` to see if there are any Retroactive Re-checks queued for the file you're about to review.
 
+## Skip zones
+
+Writers can mark passages they want Warden to ignore — quoted source material (in-world letters, articles, transcripts), passages narrated by an unreliable narrator, deliberately false claims, anything where the "facts" inside the passage are intentionally non-canon.
+
+Three marker types (all HTML comments, so they render invisibly in Obsidian):
+
+| Marker pair | Honored by |
+|---|---|
+| `<!-- quill: skip-start -->` … `<!-- quill: skip-end -->` | Quill only. |
+| `<!-- warden: skip-start -->` … `<!-- warden: skip-end -->` | Warden only. |
+| `<!-- skip-start -->` … `<!-- skip-end -->` | Atlas, Quill, Warden. (Lens never skips — readers see whatever is on the page.) |
+
+For Warden, both `<!-- warden: skip ... -->` and the generic `<!-- skip ... -->` apply. Inside any skipped region, suspend **all** Warden checks: character consistency, knowledge, behavior, geography, world-rule application, retroactive-fact detection, timeline claims. Don't list timeline claims from skipped regions in the Timeline section either — those passages are off-limits.
+
+### Parsing rules
+
+1. **Place markers on their own line.** When a marker appears mid-paragraph, do your best — treat the paragraph as skipped from the start marker onward (or up to the end marker), but prefer paragraph-bounded skipping when reporting locations.
+2. **Match start to nearest end.** A `<!-- warden: skip-start -->` is closed by the first subsequent `<!-- warden: skip-end -->`. The generic `<!-- skip-start -->` is closed by the first subsequent `<!-- skip-end -->`. Different marker types do not interact.
+3. **Don't nest the same type.** A second start before its end is malformed.
+4. **Malformed markers (start with no end, or vice versa) — flag, don't fail.** Add a one-line note in the report: `Skip-zone parse: 1 unterminated start at Ch.3 ¶12 — review proceeded with that region not skipped.`
+5. **Report honored zones in the header.** Append `_Skip zones honored: N_` to the report header. Omit the line entirely when N is zero.
+
 ## Empty-Atlas fallbacks
 
 When Atlas has no data for something Warden would normally check, **say so in the report** rather than going silent. The writer should be able to tell the difference between "Warden checked and found nothing" and "Warden couldn't check because Atlas was empty."
@@ -90,6 +112,7 @@ Write your findings to `_meta/warden/[filename]_warden.md`. Use this structure:
 # Warden Report — [filename]
 _Date: [YYYY-MM-DD]_
 _Atlas version: last updated [YYYY-MM-DD]_
+_Skip zones honored: N_  ← omit this line when N is zero
 
 ---
 

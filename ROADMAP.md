@@ -145,13 +145,14 @@ Sharpen the existing skills without expanding scope.
 - **Provisional voice derivation.** Atlas auto-derives a *provisional* voice profile from the first 2–3 appearances of each character and marks it `[provisional, derived from Ch.1–3]`. Pure observation — reads only what's on the page. Gives Quill something to work with from day one. Provisional profiles upgrade to permanent once the writer edits them.
 **Shipped:** Atlas gains a "Provisional entries and empty fields" section: empty fields stay empty (consumers handle fallbacks); Voice is the only field eligible for provisional derivation; rules cover when to derive (≥ 2 appearances), what to derive (observable patterns only — no personality inference), the `[provisional, derived from Ch.X–Y]` marker, and the upgrade-by-edit rule. Quill, Warden, and Lens each gain explicit empty-Atlas fallback rules with concrete report-line phrasings (`X: skipped — no Y in Atlas.`). Lens falls back to direct reading when its navigation index is unavailable, and never becomes an Atlas reader as a result. All four `.skill` archives rebuilt.
 
-### 3.9 Skip-zone marker convention — S
+### 3.9 Skip-zone marker convention — S — **Shipped**
 **Why:** Quoted source material, in-world documents, intentional sentence fragments — Quill and Warden have no convention for skipping them and instead flag them as errors. Add HTML-comment markers writers can drop into prose:
 - `<!-- quill: skip-start -->` … `<!-- quill: skip-end -->`
 - `<!-- warden: skip-start -->` … `<!-- warden: skip-end -->`
 - `<!-- skip-start -->` … `<!-- skip-end -->` (all skills)
 
 Each skill honors the markers in its domain. Lens does *not* honor them — readers see whatever's on the page.
+**Shipped:** Three marker pairs. `quill:` honored by Quill only; `warden:` honored by Warden only; generic honored by Atlas, Quill, Warden. Lens explicitly does not honor any skip marker (and the SKILL.md says so). Parsing rules formalized identically across the three honoring skills (markers on their own line; nearest-match start-to-end; no nesting; malformed markers flagged but don't fail; `_Skip zones honored: N_` recorded in the report header / `atlas_history.md` entry, omitted when zero). Inside any skipped region, suspend *all* checks for that skill — including Warden's timeline claims and Atlas's provisional-voice derivation. `atlas.skill`, `quill.skill`, `warden.skill`, `lens.skill` archives rebuilt. `USAGE.md` recipe section updated with the full pattern and example, plus two new Conventions entries for the markers and the header line.
 
 ### 3.10 Paragraph-anchored output schema — S
 **Why:** Long chapters → long reports → hard to navigate. Each Warden, Quill, and Lens finding should anchor to (a) a paragraph number, (b) a short quoted snippet (≤ 12 words). Warden and Lens already do this loosely; formalize the schema across all three. Side benefit: stable paragraph anchors enable acknowledgement ids (2.5).

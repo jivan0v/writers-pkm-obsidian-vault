@@ -574,6 +574,14 @@ In any report. Means the assistant *would* have checked X but Atlas didn't have 
 
 Location reference. Chapter 3, paragraph 7. Used everywhere the assistants point at a specific spot in your text.
 
+### `<!-- skip-start -->` / `<!-- skip-end -->` (and `quill:` / `warden:` variants)
+
+HTML-comment markers you can drop into your prose to hide a passage from editorial review. The generic pair hides from Atlas, Quill, and Warden — the typical choice for in-world documents. Skill-specific variants hide from one skill only. **Lens never skips** — it reads whatever a reader would see. See ["My chapter has a quoted letter / in-world document"](#my-chapter-has-a-quoted-letter--in-world-document-and-quill-keeps-flagging-it) for the full pattern.
+
+### `_Skip zones honored: N_`
+
+Header line in Quill and Warden reports (and a similar line in Atlas's session entry in `atlas_history.md`). Tells you how many skip-zone pairs the skill detected and respected. The line is omitted when N is zero. If you placed a skip zone and don't see this line, double-check your marker spelling.
+
 ---
 
 ## How to talk to the skills
@@ -753,9 +761,46 @@ It means Atlas hasn't been run yet (or was run on an empty project). The fix is 
 
 ### "My chapter has a quoted letter / in-world document and Quill keeps flagging it"
 
-This is a planned feature (ROADMAP 3.9): comment markers like `<!-- quill: skip-start -->` … `<!-- quill: skip-end -->` that Quill and Warden honor. Not shipped yet.
+Wrap the passage in skip markers. They're HTML comments — they render invisibly in Obsidian, so your reader never sees them.
 
-For now: ignore those flags, or note them as intentional in your own notes.
+Three flavors:
+
+| Marker pair | Hides the passage from |
+|---|---|
+| `<!-- quill: skip-start -->` … `<!-- quill: skip-end -->` | Quill only. Use when only prose review is the problem (e.g. a deliberately fragmented passage). |
+| `<!-- warden: skip-start -->` … `<!-- warden: skip-end -->` | Warden only. Use when "facts" inside the passage are intentionally non-canon (an unreliable narrator's account, a character's lie). |
+| `<!-- skip-start -->` … `<!-- skip-end -->` | Atlas, Quill, *and* Warden. Use for in-world documents — letters, articles, transcripts — where everything inside the passage is non-canon and shouldn't be reviewed for prose either. **This is usually what you want for in-world documents.** |
+
+**Lens still reads everything.** Lens is your reader, and a reader sees what's on the page. Skip markers don't hide passages from Lens.
+
+Example, an in-world letter inside Chapter 3:
+
+```markdown
+She unfolded the letter and read.
+
+<!-- skip-start -->
+> *Dearest Pell — by the time you read this I will be at the abbey,
+> and you will know what I have been. I am sorry. — E.*
+<!-- skip-end -->
+
+She refolded it. Twice. Three times.
+```
+
+Atlas won't record "Elena is at the abbey" as a fact (the letter is in-world, possibly a lie). Warden won't flag a continuity error. Quill won't critique the prose of the letter. Lens still reads it as the reader does.
+
+After a run, the report header tells you how many skip zones were honored:
+
+```
+_Skip zones honored: 1_
+```
+
+If the line is missing, no skip zones were detected (or you used the wrong marker — check your typing).
+
+**A few rules:**
+
+- Put each marker on its own line. Mid-paragraph markers work in a pinch but reports may be slightly less precise.
+- Don't nest the same marker type — a second `<!-- skip-start -->` before the matching `<!-- skip-end -->` is malformed. The skills will note malformed markers in their reports without failing.
+- Different marker types don't interact. A `quill: skip` zone inside a generic `skip` zone is fine; both apply.
 
 ---
 
