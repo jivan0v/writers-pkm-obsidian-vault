@@ -62,14 +62,23 @@ Open an issue with a draft entry that follows the existing roadmap item shape: t
 
    Commit the source change *and* the rebuilt archive together so distributed copies stay in sync.
 
-## Updating ROADMAP and CHANGELOG
+## Updating documentation
 
-Every shipped item gets two updates:
+**Every change updates documentation.** Skipping this is the most common gap in contributions, so before opening a PR, walk this checklist and update every file whose trigger condition is met.
 
-1. **`ROADMAP.md`** — append `— **Shipped**` to the item's title line, then add a `**Shipped:**` paragraph describing what landed. Keep the original `**Why:**` text — it documents the original rationale.
-2. **`CHANGELOG.md`** — add an entry under `## Unreleased`, in the appropriate `### Added` / `### Changed` / `### Fixed` / `### Removed` section. Reference the ROADMAP item id at the end of the entry, e.g. `(ROADMAP 3.9)`.
+| File | When to touch it |
+|---|---|
+| **`CHANGELOG.md`** | **Always**, for any user-visible change. Add an entry under `## Unreleased` in `### Added` / `### Changed` / `### Fixed` / `### Removed`. Reference the ROADMAP item id at the end if applicable, e.g. `(ROADMAP 3.9)`. |
+| **`ROADMAP.md`** | If the change ships a roadmap item: append `— **Shipped**` to the item's title line, then add a `**Shipped:**` paragraph describing what landed. Keep the original `**Why:**` text — it documents the original rationale. |
+| **`AGENTS.md`** | If any of: the shipped/remaining picture changes (§7, §8); repo layout changes (§3); skill set or pipeline changes (§4); working conventions change (§9). This is the file an incoming agent reads first — it must reflect reality. |
+| **`README.md`** | If any of: install path changes; pipeline diagram needs updating; the "What's inside" table is out of date; a new top-level file is added; a new user-facing feature is shipped. |
+| **`USAGE.md`** | If any writer-facing behavior changes — new convention (e.g. skip-zone markers), new skill mode (e.g. Quill review modes), new severity tier (e.g. Warden's `Question`), new fallback message, new recipe. The handbook must stay in sync with what the skills actually do. |
+| **`CLAUDE.md`** | Rare. Touch only if vault structure changes, a core principle is clarified, or a new top-level workflow rule applies to every session. |
+| **`CONTRIBUTING.md`** | Only if the contributor process itself changes — new tooling, new conventions, new "what won't land" entries. |
 
-If the change isn't on the roadmap, just write the CHANGELOG entry — the roadmap is for planned items.
+If the change isn't on the roadmap, skip the ROADMAP update — but the CHANGELOG entry is still required, and the AGENTS / README / USAGE check still applies.
+
+**Order matters:** update the docs in the same commit (or short series) as the code change. Don't batch documentation into a separate "docs catch-up" PR — that's how AGENTS.md drifts out of sync with reality.
 
 ## Commit messages
 

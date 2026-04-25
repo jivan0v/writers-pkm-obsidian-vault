@@ -164,7 +164,25 @@ Parked (not planned): research-folder integration, Lens reader profiles, automat
 
 ## 9. Working conventions
 
-- Each completed roadmap item ships as a single commit (or short series), updates `ROADMAP.md` (mark **Shipped**, add **Shipped:** paragraph), and gets a `CHANGELOG.md` entry under `## Unreleased`.
+### Documentation update checklist (every change)
+
+Every change updates documentation in the same commit (or short series) as the code. Don't batch docs into a "catch-up" PR — that's how `AGENTS.md` and `USAGE.md` drift out of sync. Walk this checklist before considering work done:
+
+| File | Trigger |
+|---|---|
+| `CHANGELOG.md` | **Always**, for any user-visible change. Entry under `## Unreleased`, in `### Added` / `### Changed` / `### Fixed` / `### Removed`. Reference `(ROADMAP X.Y)` if applicable. |
+| `ROADMAP.md` | If shipping a roadmap item: mark `— **Shipped**` on the title line, add a `**Shipped:**` paragraph. Keep the original `**Why:**`. |
+| `AGENTS.md` | If any of: shipped/remaining picture changes (§7, §8); repo layout changes (§3); skill set or pipeline changes (§4); working conventions change (§9). This is the cold-start file — keep it true. |
+| `README.md` | If install path changes, pipeline diagram needs updating, "What's inside" table is stale, new top-level file added, or a user-facing feature ships. |
+| `USAGE.md` | If any writer-facing behavior changes — new convention, new skill mode, new severity tier, new fallback message, new recipe. The handbook must match what the skills actually do. |
+| `CLAUDE.md` | Rare. Vault structure changes, core-principle clarifications, new top-level workflow rules. |
+| `CONTRIBUTING.md` | Only if the contributor process itself changes. |
+
+`CONTRIBUTING.md` has the canonical version of this checklist — see "Updating documentation" there.
+
+### Other conventions
+
+- Each completed roadmap item ships as a single commit (or short series).
 - For any **L**-sized item, scope it into sub-tasks before implementation.
 - **Edit `_skill-sources/<skill>/SKILL.md`** — never edit the `.skill` archive directly.
 - **Rebuild archives** after editing a skill source:
