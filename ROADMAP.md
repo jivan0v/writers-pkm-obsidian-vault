@@ -56,9 +56,9 @@ Stubs to ship:
 
 **Shipped:** All stubs live under `templates/`. Every field is optional.
 
-### 1.4 Expanded example project — M
+### 1.4 Expanded example project — M — **Shipped**
 **Why:** Current example notes are one-offs. A complete tiny example — a 3-scene short story with a populated `_meta/`, a `Lore/` folder, and sample agent outputs — teaches the framework in ten minutes. The README tells; this shows.
-**Depends on:** 1.3.
+**Shipped:** New worked example under `01_Projects/Example - A City That Forgets/`: a complete 3-chapter short story (~3000 words) about memory and identity in a world where daily amnesia is default. Includes populated Atlas, Lore/ character notes, and sample outputs from Warden, Quill, and Lens showing what agent reviews look like. Project README explains what it demonstrates and how to use it as a reference. Designed to be readable and educational in one sitting.
 
 ### 1.5 Clarify skill install in README — S — **Shipped**
 **Why:** README mentioned both `_skill-sources/` folders and `.skill` archives without picking a canonical install path. Pick one (probably `~/.claude/skills/` with copy of the folder) and give exact commands. Then add a one-liner installer so users don't need to run six `cp -r` commands by hand.
