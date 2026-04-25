@@ -1,7 +1,7 @@
 ---
 name: atlas
 description: >
-  Use this skill whenever the user wants to update, initialize, or consult the Atlas — the living story map for any writing project. Trigger for: starting a new project and needing an Atlas file created; processing newly written chapters to keep Atlas current; recording a retroactive fact (something established in a later chapter that affects earlier ones); or when Warden, Quill, or Lens needs an up-to-date Atlas before running. Also trigger when the user says "update the map", "update atlas", "what does atlas say about X", or asks about current character state, locations, active plot threads, or world rules. Atlas is the foundation all other writing skills depend on — always run Atlas before running Warden, Quill, or Lens on new material.
+  Maintains the living story map (characters, locations, world rules, plot threads, established facts) as the source of truth all other writing agents read from. Use when initializing a new project's Atlas, processing newly written chapters, recording a retroactive fact, or consulting current story state. Triggers: "atlas", "update the map", "update atlas", "what does atlas say about X", questions about current character state, locations, active threads, or world rules. Always run before Warden, Quill, or Lens on new material.
 ---
 
 # Atlas — Living Story Map

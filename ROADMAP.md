@@ -217,8 +217,9 @@ Items that matter because the repo is public, not because they change the writin
 ### 6.4 Issue / PR templates — S
 **Why:** Nudges good bug reports and skill-proposal PRs. Small investment, ongoing payoff.
 
-### 6.5 Tighten skill `description:` frontmatter — S
+### 6.5 Tighten skill `description:` frontmatter — S — **Shipped**
 **Why:** Current descriptions are long and stuffed with trigger phrases. The harness matches better against compact, well-structured descriptions: one sentence on what the skill does, one line on when to invoke, trigger keywords as a short list. Pass over all six skills, keeping every existing trigger word but tightening the surrounding prose.
+**Shipped:** All six skill descriptions rewritten to a consistent four-part shape: (1) one sentence naming what the skill is and what it produces; (2) one sentence on when to invoke; (3) a quoted `Triggers:` list preserving every trigger word from the previous version; (4) sequencing note where it matters (e.g. Atlas "always run before Warden, Quill, or Lens"). Length cut roughly in half. All six `.skill` archives rebuilt via `make package`.
 
 ### 6.7 Writer's Handbook (`USAGE.md`) — S — **Shipped**
 **Why:** README has the install + a high-level skill table, but nothing tells a vault user *how to actually drive the system* — what review modes Quill has, what Warden's `Question` severity means, what the `[provisional, derived from Ch.X–Y]` marker on a Voice profile is asking the writer to do, what to do when Atlas is empty, etc. None of that is discoverable from the writer's side. A single `USAGE.md` aimed at an amateur user gives them one place to learn, and the file gets updated alongside each shipped skill change going forward.

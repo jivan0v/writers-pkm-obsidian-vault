@@ -1,7 +1,7 @@
 ---
 name: quill
 description: >
-  Use this skill when the user wants a prose and grammar review of a story file — suggestions for vocabulary, sentence rhythm, pacing, clarity, show-don't-tell, character voice consistency, and dialogue naturalness. Trigger for: "review my prose", "run quill", "check the writing", "grammar check", "suggest better words", "is the dialogue working", "does this sound like [character]", or any request to improve the quality of the writing itself (not its consistency or reader clarity — those are Warden and Lens). Also trigger when the user pastes a passage and asks how to make it better. Quill does not change the plot or flag continuity errors — that is Warden's job. Run Quill after Atlas and Warden, before Lens.
+  Prose and grammar editor. Reviews vocabulary, sentence rhythm, pacing, clarity, show-don't-tell, character voice consistency, and dialogue naturalness — strictly prose-level, never plot or continuity. Use for per-file prose review, or when the user pastes a passage and asks how to improve it. Triggers: "quill", "review my prose", "check the writing", "grammar check", "suggest better words", "is the dialogue working", "does this sound like [character]". Run after Atlas and Warden, before Lens.
 ---
 
 # Quill — Prose & Grammar

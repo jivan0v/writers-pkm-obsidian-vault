@@ -1,7 +1,7 @@
 ---
 name: warden
 description: >
-  Use this skill when the user wants to check a story file for internal inconsistencies, continuity errors, or lore violations. Trigger for: checking if character behavior, appearance, or location contradicts earlier chapters; verifying that world rules are applied consistently; detecting timeline or travel-time errors; flagging when a new chapter introduces a fact that retroactively affects earlier ones; or running a re-check queued by Atlas. Also trigger when the user says "check consistency", "run warden", "lore check", "check for plot holes", or asks whether something in a chapter contradicts the established story. Always read Atlas before checking a file — Atlas is the source of truth. Run after Atlas, before Quill and Lens.
+  Continuity and lore checker. Flags internal inconsistencies, contradictions with Atlas, timeline and travel-time errors, world-rule violations, and retroactive facts that affect earlier chapters. Use for per-file consistency checks, or to run a re-check queued by Atlas. Triggers: "warden", "check consistency", "lore check", "check for plot holes", questions about whether something contradicts established story. Always read Atlas first; run after Atlas, before Quill and Lens.
 ---
 
 # Warden — Consistency & Lore Keeper

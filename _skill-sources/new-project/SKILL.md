@@ -1,7 +1,7 @@
 ---
 name: new-project
 description: >
-  Use this skill when the user wants to start a brand-new writing project — a novel, a standalone short story, or a shared-universe short story collection — and needs the folder scaffold created under `01_Projects/`. Trigger for: "start a new novel", "scaffold a project", "new short story", "set up a collection", "/new-project", or any request to create the directory structure and `_meta/` files for a fresh project. Asks for the title and project type, copies the appropriate stubs from `templates/`, and hands off to `/atlas` for first-run initialization. Does not generate any prose, plot, or story content — purely scaffolding.
+  Scaffolds a new writing project (novel, standalone short story, or shared-universe collection) under `01_Projects/` with `_meta/` and `Lore/` from `templates/`. Asks for title and project type, confirms paths before writing, then hands off to `/atlas` for first-run initialization. Does not generate prose, plot, or story content — purely scaffolding. Triggers: "new-project", "/new-project", "start a new novel", "scaffold a project", "new short story", "set up a collection".
 ---
 
 # New Project — Scaffolder

@@ -1,7 +1,7 @@
 ---
 name: ledger
 description: >
-  Use this skill when the user opens the workspace and wants to check what writing work is pending, run the full agent pipeline on recently changed files, or get a session report showing what each agent still needs to do. Trigger for: "check what's pending", "run everything", "ledger", "what needs to be done", "run the pipeline", "track my progress", or any request to see the state of the writing workflow across projects. Ledger is the entry point for every writing session — it detects file changes, updates the todo list, and can orchestrate Atlas → Warden → Quill → Lens in sequence. Always run Ledger first before any other writing skill when starting a new session.
+  Pipeline orchestrator and session entry point for the writing vault. Detects changed files, tracks per-file review status across writing agents, and can run Atlas → Warden → Quill → Lens in sequence. Use at the start of any writing session or whenever the user wants a status snapshot or wants to run the pipeline. Triggers: "ledger", "check what's pending", "run everything", "run the pipeline", "what needs to be done", "track my progress". Always run before any other writing skill.
 ---
 
 # Ledger — Pipeline Orchestrator & Session Tracker

@@ -1,7 +1,7 @@
 ---
 name: lens
 description: >
-  Use this skill when the user wants to know how a chapter or story reads from a fresh reader's perspective — someone encountering the story for the first time without knowledge of the lore, backstory, or authorial intent. Trigger for: "does this make sense to a reader", "run lens", "fresh eyes", "is this confusing", "does the pacing work", "would someone understand this", "am I losing the reader", or any request to evaluate the reader experience rather than the prose quality or consistency. Lens is the last agent in the pipeline — always run after Atlas, Warden, and Quill. For short stories, Lens applies extra scrutiny since every sentence carries more weight than in a novel.
+  Fresh-reader perspective. Evaluates how a chapter or story reads to someone encountering it for the first time — clarity, pacing, emotional landing, first and last impressions, what the reader actually experiences. Use to evaluate reader experience rather than prose quality (Quill) or consistency (Warden). Triggers: "lens", "fresh eyes", "does this make sense to a reader", "is this confusing", "does the pacing work", "would someone understand this", "am I losing the reader". Last agent in the pipeline — run after Atlas, Warden, and Quill.
 ---
 
 # Lens — Fresh Reader Perspective
