@@ -4,9 +4,8 @@
 **/.obsidian/themes/
 **/.obsidian/workspace.json
 
-# Prevent accidentally opening the repo root as an Obsidian vault —
-# the real vault lives at Obsidian/Working Title/. A root-level
-# .obsidian/ means someone opened the wrong folder.
+# The vault lives at Obsidian/Working Title/, not the repo root.
+# Ignore any Obsidian config that lands at the root.
 /.obsidian/
 
 # Obsidian cache
@@ -27,10 +26,8 @@ _media/
 # Claude Code local state
 .claude/
 
-# JetBrains/PyCharm — this repo isn't a Python project; if these
-# appear at the root, the IDE was pointed at the wrong folder.
+# JetBrains IDE config
 /.idea/
-/main.py
 
 # macOS system files
 .DS_Store

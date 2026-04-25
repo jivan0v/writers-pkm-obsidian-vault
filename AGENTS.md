@@ -195,7 +195,6 @@ Every change updates documentation in the same commit (or short series) as the c
   make install SKILLS_DIR=/tmp/test-skills  # sandbox testing
   ```
 - Commit messages: short imperative subject, body explains *why*, reference `(ROADMAP X.Y)` if applicable, end with `Co-Authored-By: Claude Opus 4.7 (1M context) <noreply@anthropic.com>` when Claude contributed.
-- This is **not a Python project** — ignore any `.venv/` or `main.py`; both are guarded against in `.gitignore`. Do not add Python tooling.
 - See `CONTRIBUTING.md` for the full contributor protocol (principle check, sandbox testing pattern, "what this project doesn't want").
 
 ## 10. Quick start for an incoming agent

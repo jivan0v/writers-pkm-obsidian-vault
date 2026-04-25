@@ -36,7 +36,6 @@ Versions are not yet tagged — entries land under **Unreleased** until a releas
 - **Core principles section in `CLAUDE.md`.** Codifies editorial-only, writer-led, and minimal-by-default as project-wide directives.
 - **`_meta/` convention section in `CLAUDE.md`.** Clarifies that `_meta/` files are agent-owned and should not be hand-edited.
 - **Install instructions in `README.md`.** Concrete `cp -r` commands for installing every skill into `~/.claude/skills/`, plus a note on when to prefer the folder copy over the `.skill` archives. (Partial ROADMAP 1.5 — canonical path picked, exact commands given.)
-- **`.gitignore` guards** for `/.idea/` and `/main.py` to prevent JetBrains/PyCharm noise from re-entering the repo, mirroring the existing root `/.obsidian/` guard.
 
 ### Changed
 - **`CLAUDE.md` vault structure section** rewritten for clarity: `00_Scratchpad/` subfolders documented, shared-universe `Lore/` placement specified, `templates/` folder listed.
@@ -48,5 +47,3 @@ Versions are not yet tagged — entries land under **Unreleased** until a releas
 - **`/new-project` collision check is now case-insensitive.** Default macOS APFS and most Windows filesystems are case-insensitive — `Foo/` and `foo/` collide silently — but the skill compared titles case-sensitively. Step 2 now compares case-insensitively, surfaces near-matches as a collision, and refuses to auto-rename. (ROADMAP 1.6)
 - **`/new-project` plan output now shows `Lore/` for shared-universe collections.** Step 3 previously printed only a novel example, leaving the user unable to verify a `Lore/` folder would be created for collections. Step 3 now contains three worked examples (novel, standalone short, shared-universe collection); the skill is instructed to vary the displayed plan by type so every folder being created is visible before confirmation. `new-project.skill` archive rebuilt. (ROADMAP 1.6)
 
-### Removed
-- Stray `.idea/` and `main.py` left over from opening the repo root in PyCharm. This is not a Python project.
