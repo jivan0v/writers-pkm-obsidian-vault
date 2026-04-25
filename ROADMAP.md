@@ -205,8 +205,9 @@ Support writers with multiple stories in the same world.
 
 Items that matter because the repo is public, not because they change the writing workflow.
 
-### 6.1 Architecture diagram in README — S
+### 6.1 Architecture diagram in README — S — **Shipped**
 **Why:** A diagram of the skill pipeline and `_meta/` data flow communicates more than paragraphs. Place near top of README.
+**Shipped:** Mermaid `flowchart LR` diagram added to "The skill pipeline" section showing `ledger → atlas → warden → quill → lens` with a dotted "retroactive facts" feedback edge from Warden back to Atlas. One-line caption underneath calls out Atlas as the source of truth. Diagram renders natively on GitHub. Companion changes: prominent USAGE.md callout right under the opening tagline; "What's inside" table now lists the worked example project; install step 5 rewritten to point users at the worked example before deletion rather than just suggesting deletion.
 
 ### 6.2 `CONTRIBUTING.md` — S
 **Why:** Standard for public repos. How to propose skill changes, rebuild `.skill` archives, style conventions for SKILL.md files.

@@ -8,6 +8,7 @@ Versions are not yet tagged — entries land under **Unreleased** until a releas
 ## Unreleased
 
 ### Changed
+- **README: architecture diagram, USAGE.md callout, worked-example pointer.** Added a Mermaid `flowchart LR` diagram of the skill pipeline (`ledger → atlas → warden → quill → lens`, with a dotted "retroactive facts" edge from Warden back to Atlas) right under the "The skill pipeline" header. Diagram renders natively on GitHub. Added a prominent `> **New here?** Read **[USAGE.md](USAGE.md)**` callout right under the opening tagline so first-time visitors find the writer's handbook immediately. Added a row in "What's inside" for the new example project. Rewrote install step 5 to point readers at the worked example before suggesting deletion. (ROADMAP 6.1)
 - **Tightened skill `description:` frontmatter across all six skills.** Each description now follows a consistent four-part shape: one sentence naming what the skill does, one sentence on when to invoke, a quoted `Triggers:` list (every trigger word preserved from the previous version), and a sequencing note where pipeline order matters. Roughly half the previous length. The harness matches better against compact, structured descriptions, so this should improve invocation reliability without changing skill behavior. All six `.skill` archives rebuilt. (ROADMAP 6.5)
 
 ### Added

@@ -4,6 +4,8 @@ A personal knowledge management setup for creative writers, built around an Obsi
 
 If you write novels or short stories — especially across multiple projects or a shared universe — this gives you a ready-made vault layout, a place to stash ideas, and five editorial agents that know how to work together.
 
+> **New here?** Read **[USAGE.md](USAGE.md)** — the writer's handbook. It walks through your first session, every skill, every convention, and recipes for common situations.
+
 ## What's inside
 
 | Path | Purpose |
@@ -11,6 +13,7 @@ If you write novels or short stories — especially across multiple projects or 
 | `Obsidian/Working Title/` | The Obsidian vault. Rename the folder to whatever you like. |
 | `Obsidian/Working Title/00_Scratchpad/` | Raw ideas and story fragments (`Ideas/`, `Fragments/`). Fragments are prefixed with `SS_`. Nothing here is canon yet. |
 | `Obsidian/Working Title/01_Projects/` | Active writing projects. Each novel or story collection gets its own subfolder. Each novel gets a `Lore/` subfolder. |
+| `Obsidian/Working Title/01_Projects/Example - A City That Forgets/` | Worked example: a 3-chapter short story with populated Atlas, Lore notes, and sample Warden / Quill / Lens reports. Read it to see what the framework produces in practice. |
 | `Obsidian/Working Title/02_Research/` | Research notes that feed any project. |
 | `_skill-sources/` | Editable source for the writing skills (one folder per skill, each with a `SKILL.md`). |
 | `*.skill` | Packaged (zipped) distributable versions of each skill, rebuilt from the sources. |
@@ -22,6 +25,17 @@ If you write novels or short stories — especially across multiple projects or 
 ## The skill pipeline
 
 Five Claude Code skills, each with a specific role in the editorial pipeline. Invoke them with `/skillname`.
+
+```mermaid
+flowchart LR
+    L([/ledger]) --> A([/atlas])
+    A --> W([/warden])
+    W --> Q([/quill])
+    Q --> Le([/lens])
+    W -. retroactive facts .-> A
+```
+
+Atlas is the source of truth — Warden, Quill, and Lens all read from it. Warden's retroactive findings flow back to Atlas on the next run.
 
 | Skill | Command | Role |
 |---|---|---|
@@ -85,7 +99,7 @@ Each project has a `_meta/` subfolder where all four non-Ledger skills write the
 
 4. **Personalize `CLAUDE.md`.** Edit it to add language preferences, voice notes, or anything you want Claude to know before it touches your writing.
 
-5. **Delete the example notes** in `00_Scratchpad/Ideas/EXAMPLE - A City That Forgets.md` and `00_Scratchpad/Fragments/SS_ExampleFragment.md` when you're ready to start writing your own.
+5. **Browse the worked example** at `Obsidian/Working Title/01_Projects/Example - A City That Forgets/`. Three short chapters with a populated Atlas, Lore notes, and sample Warden / Quill / Lens reports. Reading it end-to-end is the fastest way to see what the framework produces. Delete the example project (and the scratchpad notes at `00_Scratchpad/Ideas/EXAMPLE - A City That Forgets.md` and `00_Scratchpad/Fragments/SS_ExampleFragment.md`) whenever you're ready to start writing your own.
 
 ## A typical session
 
