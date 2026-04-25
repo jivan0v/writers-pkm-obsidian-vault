@@ -1,9 +1,8 @@
-# Edit OWNER/REPO below to your GitHub path before relying on these contact links.
 blank_issues_enabled: false
 contact_links:
   - name: Read the Writer's Handbook first
-    url: https://github.com/OWNER/REPO/blob/main/USAGE.md
+    url: https://github.com/jivan0v/writers-pkm-obsidian-vault/blob/main/USAGE.md
     about: Most usage questions are answered in USAGE.md — recipes, conventions, and what each skill produces.
   - name: Read CONTRIBUTING.md before proposing changes
-    url: https://github.com/OWNER/REPO/blob/main/CONTRIBUTING.md
+    url: https://github.com/jivan0v/writers-pkm-obsidian-vault/blob/main/CONTRIBUTING.md
     about: Three core principles, what changes won't land, and how to structure a proposal.

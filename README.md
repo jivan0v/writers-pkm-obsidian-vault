@@ -67,7 +67,7 @@ Each project has a `_meta/` subfolder where all four non-Ledger skills write the
 
 1. **Clone or generate from this repo.**
    ```bash
-   git clone https://github.com/<you>/writers-pkm-obsidian-vault.git
+   git clone https://github.com/jivan0v/writers-pkm-obsidian-vault.git
    cd writers-pkm-obsidian-vault
    ```
 
