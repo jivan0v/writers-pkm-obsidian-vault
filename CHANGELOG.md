@@ -8,6 +8,7 @@ Versions are not yet tagged — entries land under **Unreleased** until a releas
 ## Unreleased
 
 ### Added
+- **`Makefile` with one-liner install and packaging targets.** `make install` copies every skill folder under `_skill-sources/` into `~/.claude/skills/` (overridable with `SKILLS_DIR=/some/path`), replacing any previous copy. `make package` rebuilds every `<skill>.skill` archive at the repo root from the corresponding source folder. `make clean-archives` removes them. `make help` (the default target) lists everything. README install step now leads with `make install` and keeps the explicit `cp -r` block as a fallback for users without `make`; the Personalization section points at `make install` for re-pushing edits and `make package` for rebuilding archives. Closes the remaining piece of ROADMAP 1.5.
 - **Skip-zone marker convention.** Three HTML-comment marker pairs let writers hide passages from editorial review without affecting how the manuscript renders in Obsidian:
   - `<!-- quill: skip-start -->` … `<!-- quill: skip-end -->` — Quill only.
   - `<!-- warden: skip-start -->` … `<!-- warden: skip-end -->` — Warden only.

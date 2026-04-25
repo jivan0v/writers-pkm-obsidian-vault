@@ -60,9 +60,9 @@ Stubs to ship:
 **Why:** Current example notes are one-offs. A complete tiny example — a 3-scene short story with a populated `_meta/`, a `Lore/` folder, and sample agent outputs — teaches the framework in ten minutes. The README tells; this shows.
 **Depends on:** 1.3.
 
-### 1.5 Clarify skill install in README — S — **Partially shipped**
-**Why:** README mentions both `_skill-sources/` folders and `.skill` archives without picking a canonical install path. Pick one (probably `~/.claude/skills/` with copy of the folder) and give exact commands.
-**Shipped:** README install step now gives explicit `cp -r` commands for every skill folder into `~/.claude/skills/` and explains when the `.skill` archives are useful instead. Remaining: a one-liner installer / Makefile target.
+### 1.5 Clarify skill install in README — S — **Shipped**
+**Why:** README mentioned both `_skill-sources/` folders and `.skill` archives without picking a canonical install path. Pick one (probably `~/.claude/skills/` with copy of the folder) and give exact commands. Then add a one-liner installer so users don't need to run six `cp -r` commands by hand.
+**Shipped:** First pass gave explicit `cp -r` commands for every skill folder into `~/.claude/skills/`. Second pass adds a `Makefile` at the repo root with three targets: `make install` (copies all six skill folders into `~/.claude/skills/`, overridable via `SKILLS_DIR=`), `make package` (rebuilds every `.skill` archive from `_skill-sources/`), and `make clean-archives`. README install step now leads with `make install` and keeps the manual `cp -r` block as a fallback for users without `make`. Personalization section updated to point at `make install` and `make package` for redistribution.
 
 ### 1.6 `/new-project` polish — S — **Shipped**
 **Why:** Two small gaps in the shipped skill. (a) Title-collision check is case-sensitive, but default macOS APFS is case-insensitive — `foo` and `Foo` would collide silently. (b) For shared-universe collections, the displayed "Will create" plan doesn't list the `Lore/` folder, so the user can't see it before confirming. Both are one-line changes.

@@ -15,6 +15,7 @@ If you write novels or short stories — especially across multiple projects or 
 | `_skill-sources/` | Editable source for the writing skills (one folder per skill, each with a `SKILL.md`). |
 | `*.skill` | Packaged (zipped) distributable versions of each skill, rebuilt from the sources. |
 | `templates/` | Optional-everything stub files (`_meta/`, `Lore/` notes) that `/new-project` copies when scaffolding a new project. |
+| `Makefile` | One-liner installer (`make install`) and archive packager (`make package`). Run `make help` to see every target. |
 | `CLAUDE.md` | Instructions Claude Code reads at the start of every session — vault conventions and where you personalize voice/language preferences. |
 | `USAGE.md` | Writer's handbook. Detailed walkthrough for an amateur user — every skill, every convention, recipes for common situations. |
 
@@ -58,7 +59,15 @@ Each project has a `_meta/` subfolder where all four non-Ledger skills write the
 
 2. **Open the vault in Obsidian.** Point Obsidian at `Obsidian/Working Title/` (or rename that folder first). The vault comes with sensible core plugins enabled and a few community plugins declared — Obsidian will prompt you to install them on first open.
 
-3. **Install the skills into Claude Code.** Each skill is a folder under `_skill-sources/` containing a `SKILL.md`. Copy every folder into your Claude Code skills directory (`~/.claude/skills/`) and restart Claude Code so it picks them up:
+3. **Install the skills into Claude Code.** Each skill is a folder under `_skill-sources/` containing a `SKILL.md`. The fastest path is the bundled Makefile:
+
+   ```bash
+   make install
+   ```
+
+   That copies all six skill folders into `~/.claude/skills/`, replacing any previous copy. Override the destination with `make install SKILLS_DIR=/some/other/path`. Restart Claude Code so it picks them up.
+
+   If you'd rather not use `make`, the manual equivalent:
 
    ```bash
    mkdir -p ~/.claude/skills
@@ -91,9 +100,15 @@ Each project has a `_meta/` subfolder where all four non-Ledger skills write the
 
 Most of the configuration lives in `CLAUDE.md`. A common edit is adding a `## Language` section describing your primary language so Quill and Lens know to expect translation-artifact phrasing, or a `## Voice` section describing the tone you want Claude to use when responding.
 
-The skills themselves are intentionally generic — if you want to adjust behavior (e.g. different severity thresholds, different output format), edit the corresponding `_skill-sources/<skill>/SKILL.md`. Re-run the `cp -r` from the install step above to push your edits into `~/.claude/skills/`.
+The skills themselves are intentionally generic — if you want to adjust behavior (e.g. different severity thresholds, different output format), edit the corresponding `_skill-sources/<skill>/SKILL.md`. Re-run `make install` (or the equivalent `cp -r` block from the install step above) to push your edits into `~/.claude/skills/`.
 
-If you want to redistribute a modified skill, rebuild its `.skill` archive:
+If you want to redistribute a modified skill, rebuild its `.skill` archive. To rebuild every archive at once:
+
+```bash
+make package
+```
+
+To rebuild just one:
 
 ```bash
 cd _skill-sources
