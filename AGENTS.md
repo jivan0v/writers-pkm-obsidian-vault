@@ -12,7 +12,7 @@ A personal knowledge management workspace for creative writers, combining:
 - A **pipeline of six Claude Code skills** (`/ledger`, `/atlas`, `/warden`, `/quill`, `/lens`, `/new-project`) that observe and refine the writer's manuscripts.
 - **Templates** (`templates/`) and **distributable skill archives** (`*.skill`) for sharing.
 
-Public, MIT-licensed. Designed to be cloned and personalized.
+Public, MIT-licensed. Designed to be cloned and personalized. Live at **https://github.com/jivan0v/writers-pkm-obsidian-vault**.
 
 ## 2. Non-negotiable principles
 
@@ -31,18 +31,31 @@ Each `SKILL.md` opens with a "read first" guardrails block enforcing these mecha
 PKM/
 ├── AGENTS.md                  ← this file
 ├── CLAUDE.md                  ← per-session instructions Claude Code auto-loads
-├── README.md                  ← user-facing intro + install
+├── README.md                  ← user-facing intro + install (Mermaid pipeline diagram, USAGE callout)
+├── USAGE.md                   ← writer's handbook (amateur-user-facing detail per skill + recipes)
 ├── ROADMAP.md                 ← tiered enhancement plan (source of truth for "what's next")
 ├── CHANGELOG.md               ← shipped changes (Keep-a-Changelog format)
-├── USAGE.md                   ← writer's handbook (amateur-user-facing detail per skill + recipes)
-├── LICENSE                    ← MIT
+├── CONTRIBUTING.md            ← philosophy, how to propose changes, conventions
+├── Makefile                   ← `make install` / `make package` / `make help`
+├── LICENSE                    ← MIT, copyright Eugenio Valdes
+│
+├── .github/
+│   ├── ISSUE_TEMPLATE/        ← bug, skill_proposal, roadmap_addition, question, config.yml
+│   └── PULL_REQUEST_TEMPLATE.md
 │
 ├── Obsidian/Working Title/    ← the vault itself (rename freely)
 │   ├── .obsidian/             ← Obsidian config, plugins
 │   ├── 00_Scratchpad/
 │   │   ├── Ideas/             ← raw idea notes (one example present)
 │   │   └── Fragments/         ← short fragments prefixed `SS_` (one example present)
-│   ├── 01_Projects/           ← active novels / story collections (currently empty)
+│   ├── 01_Projects/
+│   │   └── Example - A City That Forgets/   ← worked example: 3-chapter short story
+│   │       ├── Chapter_01.md, Chapter_02.md, Chapter_03.md
+│   │       ├── README.md      ← what this example demonstrates
+│   │       ├── Lore/{Maya,Zara}.md
+│   │       └── _meta/
+│   │           ├── atlas.md, status.md
+│   │           └── warden/, quill/, lens/  ← sample agent reports
 │   └── 02_Research/           ← research feeding any project (currently empty)
 │
 ├── _skill-sources/            ← editable source of every skill (one folder each)
@@ -53,7 +66,7 @@ PKM/
 │   ├── lens/SKILL.md
 │   └── new-project/SKILL.md
 │
-├── *.skill                    ← zipped distributable copies of each skill (rebuild from sources)
+├── *.skill                    ← zipped distributable copies (rebuild via `make package`)
 │
 └── templates/                 ← stubs `/new-project` copies into new projects
     ├── _meta/atlas.md
@@ -101,49 +114,71 @@ Every project has a `_meta/` subfolder where skills write their outputs:
 
 These sections may be empty placeholders in a fresh clone — that's fine. Don't prompt the user to fill them.
 
-## 7. Current state (as of latest commit)
+## 7. Current state
 
-From `CHANGELOG.md` (Unreleased):
-- `/new-project` skill shipped.
-- `templates/` directory with optional-everything stubs shipped.
-- Editorial-only guardrails block added to every `SKILL.md`.
-- `CHANGELOG.md` added.
-- Core principles + `_meta/` convention codified in `CLAUDE.md`.
-- README install instructions concretized (`cp -r` per skill).
-- `.gitignore` guards for `/.idea/` and `/main.py` (this is **not** a Python project).
+**Repo went public on 2026-04-25** at https://github.com/jivan0v/writers-pkm-obsidian-vault. All commits attributed to `Eugenio Valdes <fhreak@gmail.com>`. Topics: `ai-agents`, `claude-code`, `creative-writing`, `obsidian`, `pkm`, `writing-tools`.
 
-`01_Projects/` and `02_Research/` are currently empty (`.gitkeep` only). The only example content lives in `00_Scratchpad/`.
+What's actually shipped (see `CHANGELOG.md` Unreleased and `ROADMAP.md` for the full record):
 
-Recent commits:
-- `ef17ced` Add `/new-project` scaffolding skill (ROADMAP 1.2)
-- `c4a84c5` Remove stray JetBrains/PyCharm files and guard against recurrence
-- `528d835` Add editorial-only guardrails and project stub templates
-- `712c834` Remove stray root-level `.obsidian/` and guard against recurrence
-- `cc3463a` Rewrite ROADMAP with consolidated design ideas
+**Foundations (Tier 1) — fully complete**
+- 1.1 Editorial-only guardrails block at the top of every `SKILL.md`
+- 1.2 `/new-project` scaffolding skill
+- 1.3 `templates/` with optional-everything stubs
+- 1.4 Worked example project at `Obsidian/Working Title/01_Projects/Example - A City That Forgets/` — 3 chapters + populated Atlas + Lore notes + sample Warden/Quill/Lens reports
+- 1.5 `Makefile` with `make install` / `make package` / `make clean-archives` / `make help`
+- 1.6 `/new-project` polish (case-insensitive collision check, `Lore/` shown for collections in plan)
+
+**Pipeline flexibility (Tier 2) — partial**
+- 2.6 Warden severity tier `Question` + Timeline section
+- 2.7 Quill review-depth modes (`drafting` / `balanced` / `polish`) with `_meta/quill/config.yml` precedence
+
+**Atlas + skill refinements (Tier 3) — partial**
+- 3.8 Empty-Atlas fallbacks across consumer skills + Atlas provisional voice derivation (`[provisional, derived from Ch.X–Y]`)
+- 3.9 Skip-zone marker convention (`<!-- skip-start --> ... <!-- skip-end -->` plus skill-specific variants; Lens deliberately ignores them)
+
+**Public-repo polish (Tier 6) — mostly complete**
+- 6.1 Mermaid pipeline diagram in README + prominent USAGE.md callout
+- 6.2 `CONTRIBUTING.md`
+- 6.3 *(partial)* `CHANGELOG.md` shipped; per-skill `version:` frontmatter still open
+- 6.4 GitHub issue and PR templates under `.github/`
+- 6.5 Tightened `description:` frontmatter across all six skills (consistent four-part shape: what / when / Triggers list / sequencing note)
+- 6.6 Atlas `SKILL.md` path-diagram fix
+- 6.7 `USAGE.md` writer's handbook
+
+`01_Projects/Example - A City That Forgets/` is the only populated project. `02_Research/` is empty (`.gitkeep` only).
 
 ## 8. What's next (from `ROADMAP.md`)
 
-Tiers, lowest-dependency first within each:
+Tier-by-tier remaining work, lowest-dependency first within each:
 
-1. **Foundations** — most shipped. Remaining: 1.4 expanded example project, 1.5 installer one-liner. *(1.6 `/new-project` polish shipped.)*
-2. **Pipeline flexibility** — 2.1 modes (Draft / Continuity / Polish / Full), 2.2 Warden options + impact scope, 2.3 `/wrap`, 2.4 Ledger dashboard, 2.5 acknowledgement convention. *(2.6 Warden severity + timeline upgrades shipped. 2.7 Quill noise-floor shipped.)*
-3. **Atlas + skill refinements** — 3.1 temporal voice evolution, 3.2 short-story/novel alignment, 3.3 output accumulation policy, 3.4 multi-language pattern, 3.5 Ledger reliability fixes, 3.6 Atlas watermark + incremental ingest, 3.7 decouple Warden→`atlas.md` writes, 3.10 paragraph-anchored output, 3.11 Lens first/last impression + genre signaling, 3.12 Atlas moments index. *(3.8 empty-Atlas fallbacks + provisional voice shipped. 3.9 skip-zone markers shipped.)*
-4. **Obsidian leverage** — YAML frontmatter + Dataview, opinionated default `.obsidian/`, note templates, daily-notes integration.
-5. **Shared-universe architecture** — `03_Universe_Atlas/` with dual ingestion + promotion pipeline.
-6. **Public-repo polish** — architecture diagram, `CONTRIBUTING.md`, skill versioning, issue/PR templates, 6.5 tighten skill descriptions. *(6.6 Atlas path-diagram fix shipped. 6.7 Writer's Handbook shipped — keep it updated alongside every shipped skill change going forward.)*
+1. **Foundations** — *fully shipped.*
+2. **Pipeline flexibility** — 2.1 Pipeline Modes (Draft / Continuity / Polish / Full Audit) [unlocks 2.5 + 2.7 pipeline integration]; 2.2 Warden options + impact scope; 2.3 `/wrap` session-end skill; 2.4 Ledger dashboard refinement; 2.5 acknowledgement convention [depends on 3.10].
+3. **Atlas + skill refinements** — 3.1 temporal voice evolution; 3.2 short-story/novel handling alignment; 3.3 output file accumulation policy; 3.4 multi-language personalization pattern; 3.5 Ledger reliability fixes [unlocks 3.6]; 3.6 Atlas watermark + incremental ingest [depends on 3.5, unlocks 3.12]; 3.7 decouple Warden→`atlas.md` writes; 3.10 paragraph-anchored output schema; 3.11 Lens first/last impression + genre signaling; 3.12 Atlas moments index [depends on 3.6].
+4. **Obsidian leverage** — 4.1 YAML frontmatter + Dataview dashboards; 4.2 opinionated default `.obsidian/` config; 4.3 Templater note templates [depends on 4.2]; 4.4 daily-notes integration [depends on 2.3 + 4.2].
+5. **Shared-universe architecture** — 5.1 `03_Universe_Atlas/` with dual ingestion; 5.2 promotion pipeline [depends on 5.1].
+6. **Public-repo polish** — 6.3 per-skill `version:` frontmatter (CHANGELOG already shipped).
 
-Parked (not planned): research-folder integration, Lens reader profiles, automated skill tests, external-source import, AI-drafting support (violates principle #1).
+**Suggested next thread:** Tier 3 small items first (3.5 → 3.6 → 3.10 chain) since they're foundational refinements that unblock several downstream items. Tier 2.1 (Pipeline Modes) is the next biggest payoff but is **M**-sized.
+
+Parked (not planned): research-folder integration, Lens reader profiles, automated skill tests, external-source import (Scrivener / Google Docs / plain text), AI-drafting support (violates principle #1).
 
 ## 9. Working conventions
 
-- Each completed roadmap item ships as a single commit (or short series) and gets a CHANGELOG entry.
+- Each completed roadmap item ships as a single commit (or short series), updates `ROADMAP.md` (mark **Shipped**, add **Shipped:** paragraph), and gets a `CHANGELOG.md` entry under `## Unreleased`.
 - For any **L**-sized item, scope it into sub-tasks before implementation.
-- The `*.skill` archives are rebuilt from `_skill-sources/` — when a skill changes, rebuild with:
+- **Edit `_skill-sources/<skill>/SKILL.md`** — never edit the `.skill` archive directly.
+- **Rebuild archives** after editing a skill source:
   ```bash
-  cd _skill-sources && zip -q ../<skill>.skill <skill>/SKILL.md
+  make package        # rebuilds all six
   ```
-- Distribution path: users `cp -r _skill-sources/<skill> ~/.claude/skills/` and restart Claude Code.
-- This is **not a Python project** — ignore `.venv/`; it's a stray. Do not add Python tooling.
+- **Install / update local skills** in Claude Code:
+  ```bash
+  make install                              # → ~/.claude/skills/
+  make install SKILLS_DIR=/tmp/test-skills  # sandbox testing
+  ```
+- Commit messages: short imperative subject, body explains *why*, reference `(ROADMAP X.Y)` if applicable, end with `Co-Authored-By: Claude Opus 4.7 (1M context) <noreply@anthropic.com>` when Claude contributed.
+- This is **not a Python project** — ignore any `.venv/` or `main.py`; both are guarded against in `.gitignore`. Do not add Python tooling.
+- See `CONTRIBUTING.md` for the full contributor protocol (principle check, sandbox testing pattern, "what this project doesn't want").
 
 ## 10. Quick start for an incoming agent
 
