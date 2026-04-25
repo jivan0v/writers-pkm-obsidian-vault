@@ -216,8 +216,9 @@ Items that matter because the repo is public, not because they change the writin
 ### 6.3 `CHANGELOG.md` + skill versioning — S
 **Why:** As skills evolve, users should see what changed. Semver at the repo level; each skill's frontmatter gets a `version` field.
 
-### 6.4 Issue / PR templates — S
+### 6.4 Issue / PR templates — S — **Shipped**
 **Why:** Nudges good bug reports and skill-proposal PRs. Small investment, ongoing payoff.
+**Shipped:** Four issue templates under `.github/ISSUE_TEMPLATE/`: `bug_report.md`, `skill_proposal.md`, `roadmap_addition.md`, `question.md`. Each carries the relevant labels and structured prompts; the skill and roadmap proposals include a principle-check checkbox so contributors self-validate against the core principles before submitting. `config.yml` disables blank issues and surfaces `USAGE.md` and `CONTRIBUTING.md` as contact links (placeholder `OWNER/REPO` URLs to swap in once the GitHub path is known). PR template at `.github/PULL_REQUEST_TEMPLATE.md` covers what the PR does, principle check, contributor checklist (edit sources not archives, rebuild via `make package`, update CHANGELOG/ROADMAP, sandbox-test via `make install SKILLS_DIR=/tmp/...`).
 
 ### 6.5 Tighten skill `description:` frontmatter — S — **Shipped**
 **Why:** Current descriptions are long and stuffed with trigger phrases. The harness matches better against compact, well-structured descriptions: one sentence on what the skill does, one line on when to invoke, trigger keywords as a short list. Pass over all six skills, keeping every existing trigger word but tightening the surrounding prose.
