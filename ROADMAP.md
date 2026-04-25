@@ -209,8 +209,9 @@ Items that matter because the repo is public, not because they change the writin
 **Why:** A diagram of the skill pipeline and `_meta/` data flow communicates more than paragraphs. Place near top of README.
 **Shipped:** Mermaid `flowchart LR` diagram added to "The skill pipeline" section showing `ledger → atlas → warden → quill → lens` with a dotted "retroactive facts" feedback edge from Warden back to Atlas. One-line caption underneath calls out Atlas as the source of truth. Diagram renders natively on GitHub. Companion changes: prominent USAGE.md callout right under the opening tagline; "What's inside" table now lists the worked example project; install step 5 rewritten to point users at the worked example before deletion rather than just suggesting deletion.
 
-### 6.2 `CONTRIBUTING.md` — S
+### 6.2 `CONTRIBUTING.md` — S — **Shipped**
 **Why:** Standard for public repos. How to propose skill changes, rebuild `.skill` archives, style conventions for SKILL.md files.
+**Shipped:** New `CONTRIBUTING.md` at the repo root. Covers core principles (so contributors don't propose features that violate them), project layout, how to propose changes (bug fix vs. new behavior vs. roadmap addition), rules for editing skills (`_skill-sources/` is canonical, never edit `.skill` archives directly, keep guardrails block, four-part description shape, `_meta/` ownership), local testing pattern with `make install SKILLS_DIR=/tmp/...`, ROADMAP/CHANGELOG update conventions, commit message style, and a "what this project doesn't want" section that names the most likely rejected proposals (AI-drafted prose, required fields, external service integrations, CI for v0). README links to it from a new "Contributing" section.
 
 ### 6.3 `CHANGELOG.md` + skill versioning — S
 **Why:** As skills evolve, users should see what changed. Semver at the repo level; each skill's frontmatter gets a `version` field.

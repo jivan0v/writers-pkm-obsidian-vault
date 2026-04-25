@@ -129,6 +129,10 @@ cd _skill-sources
 zip -q ../<skill>.skill <skill>/SKILL.md
 ```
 
+## Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for project philosophy, how to propose changes, and conventions for editing skills, updating the changelog, and writing commit messages.
+
 ## License
 
 MIT. See [LICENSE](LICENSE). Attribution is appreciated — a link back to the original repo is enough.
