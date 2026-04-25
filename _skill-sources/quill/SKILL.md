@@ -32,6 +32,56 @@ Your output files go in `_meta/quill/` inside the project directory. File naming
 
 Read `_meta/atlas.md` — specifically the **Characters** section and each character's **Voice** profile and **Speech markers**. Quill uses these to catch moments where a character's dialogue or inner monologue doesn't match their established patterns.
 
+## Empty-Atlas fallbacks
+
+When Atlas has no data for something Quill would normally check, **say so in the report** rather than going silent. The writer should be able to tell the difference between "Quill checked and found nothing" and "Quill couldn't check because Atlas was empty."
+
+Per-character voice handling:
+
+- **No Voice profile / no Speech markers.** Skip voice-drift checks for that character. Add a one-line note under Voice Notes: `[Character name]: no Voice profile in Atlas; voice-drift checks skipped.`
+- **Provisional Voice profile** (marked `[provisional, derived from Ch.X–Y]` per Atlas). Use it, but flag conservatively — the profile is a sample, not authoritative. When raising voice notes against a provisional profile, prefix them with `(provisional baseline)` so the writer knows the comparison is tentative.
+- **Permanent Voice profile** (no marker). Standard checks apply; flag drift normally.
+
+Project-wide fallbacks:
+
+- **No Atlas at all.** Stop and tell the user to run Atlas first. Quill needs at minimum a list of characters to check voice consistency. The other Quill checks (grammar, rhythm, show/tell, vocabulary) do not require Atlas — if the user explicitly waives voice checks, proceed with everything else and note the waiver in the report header.
+
+## Review depth (noise floor)
+
+Quill has three review modes. The mode is the noise floor — a way for the writer to dial findings down during early drafting and up during polish. Quill has the highest finding density of any skill; without a floor, drafts get reviewed harder than they need to be.
+
+| Mode | Surfaces |
+|---|---|
+| `drafting` *(default)* | Major Suggestions, Voice Notes, All Clear. Minor Notes, Phrasing Suggestions, and Vocabulary Alternatives suppressed. |
+| `balanced` | Major Suggestions, Voice Notes, top 10 Minor Notes by impact, top 8 Phrasing rows, top 8 Vocabulary rows, All Clear. |
+| `polish` | Everything Quill can find. No caps. |
+
+### How the mode is chosen
+
+In this order — first match wins.
+
+1. **Per-invocation argument.** If the user invokes Quill with an explicit mode (e.g. "run quill in polish mode"), use it.
+2. **Pipeline override.** When invoked through Ledger's pipeline modes (ROADMAP 2.1, not yet shipped), the pipeline mode dictates Quill's mode: Polish Pass → `polish`, Continuity Pass → `drafting`, Full Audit → `polish`. Until 2.1 ships, this rule has no effect.
+3. **Project config.** Read `_meta/quill/config.yml` if it exists. Honor its `mode:` field.
+4. **Default.** Otherwise `drafting`. Drafting writers are who Quill should default-favor — heavy review of a draft chapter is wasted effort.
+
+### Project config file
+
+Optional. If present at `_meta/quill/config.yml`:
+
+```yaml
+# All fields optional. Defaults shown.
+mode: drafting       # drafting | balanced | polish
+```
+
+If the file is absent, malformed, or contains unknown keys, fall back to defaults — never block on config errors. Note the source of the active mode (argument / pipeline / config / default) in the report header.
+
+### Always-on, regardless of mode
+
+- **Major Suggestions** — by definition these affect the reading experience.
+- **Voice Notes** — voice consistency matters at every stage.
+- **All Clear** — knowing what's clean is useful at every stage.
+
 ## What Quill reviews
 
 **Grammar and mechanics**
@@ -73,11 +123,12 @@ Read `_meta/atlas.md` — specifically the **Characters** section and each chara
 
 ## Output
 
-Write your review to `_meta/quill/[filename]_quill.md`. Use this structure:
+Write your review to `_meta/quill/[filename]_quill.md`. Use the structure below. **Include only the sections the active mode permits** (see Review depth above). Major Suggestions, Voice Notes, and All Clear are always included; Minor Notes, Phrasing Suggestions, and Vocabulary Alternatives are conditional. The Mode line in the header records which floor was applied and where it came from.
 
 ```markdown
 # Quill Review — [filename]
 _Date: [YYYY-MM-DD]_
+_Mode: drafting | balanced | polish (source: argument | pipeline | config | default)_
 
 ---
 

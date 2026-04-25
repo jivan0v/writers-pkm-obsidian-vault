@@ -74,10 +74,13 @@ Accept the answer in any phrasing. If anything is ambiguous (e.g., "a few short 
 - Sanitize the title for filesystem use: trim whitespace, leave spaces and most punctuation as-is (Obsidian handles them), but reject `/` and `\`. Don't auto-rename — if the title contains a slash, ask the user for an alternative.
 - Target: `Obsidian/Working Title/01_Projects/<Title>/`. (Substitute the actual vault folder name if it has been renamed; check with `ls Obsidian/` if unsure.)
 - If the folder already exists and is non-empty, **abort.** Show the user the existing path and ask whether they want to (a) pick a different title, (b) open the existing project instead, or (c) something else. Do not merge into or overwrite an existing project.
+- **Case-insensitive collision check.** Default macOS APFS and most Windows filesystems are case-insensitive — `Foo/` and `foo/` collide silently, and a `mkdir foo` next to an existing `Foo` will land inside `Foo/`. Compare the proposed title against existing entries under `01_Projects/` case-insensitively. If a name matches case-insensitively but not exactly, surface this to the user as a collision and ask whether they meant the existing project or want a genuinely different name. Do not auto-rename.
 
 ### 3. Show the plan, then wait
 
-Print the exact list of paths you will create. Example for a novel titled "The Glass Orchard":
+Print the **exact** list of paths you will create — every folder and file, varied by project type. The user must see every path, including `Lore/` when it applies, before confirming.
+
+**Novel** — example for "The Glass Orchard":
 
 ```
 Will create:
@@ -86,6 +89,29 @@ Will create:
   Obsidian/Working Title/01_Projects/The Glass Orchard/_meta/atlas.md
   Obsidian/Working Title/01_Projects/The Glass Orchard/_meta/status.md
   Obsidian/Working Title/01_Projects/The Glass Orchard/Lore/
+```
+
+**Standalone short story** — example for "Brass Saints":
+
+```
+Will create:
+  Obsidian/Working Title/01_Projects/Brass Saints/
+  Obsidian/Working Title/01_Projects/Brass Saints/_meta/
+  Obsidian/Working Title/01_Projects/Brass Saints/_meta/atlas.md
+  Obsidian/Working Title/01_Projects/Brass Saints/_meta/status.md
+```
+
+(No `Lore/` for a standalone short — see the project-type table above.)
+
+**Shared-universe collection** — example for "Hollowmark Stories":
+
+```
+Will create:
+  Obsidian/Working Title/01_Projects/Hollowmark Stories/
+  Obsidian/Working Title/01_Projects/Hollowmark Stories/_meta/
+  Obsidian/Working Title/01_Projects/Hollowmark Stories/_meta/atlas.md
+  Obsidian/Working Title/01_Projects/Hollowmark Stories/_meta/status.md
+  Obsidian/Working Title/01_Projects/Hollowmark Stories/Lore/   ← shared across all stories in the collection
 ```
 
 Ask: "Proceed?" Wait for confirmation. If the user declines or asks for changes, adjust and re-show.

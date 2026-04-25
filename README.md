@@ -16,6 +16,7 @@ If you write novels or short stories — especially across multiple projects or 
 | `*.skill` | Packaged (zipped) distributable versions of each skill, rebuilt from the sources. |
 | `templates/` | Optional-everything stub files (`_meta/`, `Lore/` notes) that `/new-project` copies when scaffolding a new project. |
 | `CLAUDE.md` | Instructions Claude Code reads at the start of every session — vault conventions and where you personalize voice/language preferences. |
+| `USAGE.md` | Writer's handbook. Detailed walkthrough for an amateur user — every skill, every convention, recipes for common situations. |
 
 ## The skill pipeline
 
@@ -83,6 +84,8 @@ Each project has a `_meta/` subfolder where all four non-Ledger skills write the
 2. Say yes (or pick specific agents). Ledger walks Atlas once per project, then Warden → Quill → Lens per changed file.
 3. Read the reports in each project's `_meta/` folder. They're markdown — open them in Obsidian alongside your draft.
 4. Revise. Repeat.
+
+> **New here?** Read [USAGE.md](USAGE.md) — a detailed handbook for writers covering every skill, every convention (provisional voice markers, severity tiers, Quill's review modes, empty-Atlas fallback messages), and recipes for common situations.
 
 ## Personalization
 

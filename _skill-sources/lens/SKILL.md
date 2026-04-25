@@ -46,6 +46,8 @@ When handling a long novel (see below), you may open Atlas *solely* to locate wh
 
 This constraint is deliberate. If something only makes sense because you've read a lore file, flag it — the reader won't have that context.
 
+**If Atlas is empty or missing**, the navigation index is unavailable. Fall back to the long-novel handling rules below (read the preceding 2–3 chapters in full, plus first/last paragraphs of earlier chapters). Note this in the report header: `Reading position: Atlas index unavailable; read [Ch.X–Y] in full + skim Ch.1–N`. Lens does not become an Atlas reader because the index is missing — it just falls back to direct reading.
+
 ## Handling long novels
 
 For early chapters (Ch.1–5 or so), read all preceding chapters in full to build an accurate reader memory.

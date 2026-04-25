@@ -34,6 +34,24 @@ Always read `_meta/atlas.md` first. Atlas is the source of truth for current cha
 
 Also check `_meta/status.md` to see if there are any Retroactive Re-checks queued for the file you're about to review.
 
+## Empty-Atlas fallbacks
+
+When Atlas has no data for something Warden would normally check, **say so in the report** rather than going silent. The writer should be able to tell the difference between "Warden checked and found nothing" and "Warden couldn't check because Atlas was empty."
+
+Per-section fallbacks:
+
+- **No Characters in Atlas.** Skip character-consistency checks (location, knowledge, behavior, relationships). Note in All Clear: `Character consistency: skipped — no Characters in Atlas.`
+- **No Locations.** Skip geography and Atlas-derived travel-time checks (in-file timeline checks still apply). Note in All Clear: `Geography / Atlas travel times: skipped — no Locations in Atlas.`
+- **No World Rules.** Skip world-rule consistency. Note in All Clear: `World rules: skipped — no World Rules in Atlas.`
+- **No Established Facts.** No retroactive re-check work to do. Note in All Clear: `Retroactive re-checks: none queued.`
+- **Provisional entries** (Voice fields marked `[provisional, derived from Ch.X–Y]`). Warden's character-behavior checks may consult provisional voice notes, but flag drift conservatively — provisional profiles are a sample, not authoritative.
+
+Project-wide:
+
+- **No Atlas at all.** Stop. Tell the user to run Atlas first. Warden cannot do its primary job without a baseline.
+
+In-file checks (timeline within this file, sequence of events, ambiguity flags) do not require Atlas and run regardless.
+
 ## What Warden checks
 
 **Character consistency**
@@ -81,7 +99,7 @@ _Atlas version: last updated [YYYY-MM-DD]_
 - **Location in text:** [paragraph number or quoted passage]
 - **Issue:** [precise description of the contradiction]
 - **Atlas reference:** [what Atlas says / where it was established]
-- **Severity:** Major | Minor
+- **Severity:** Major | Minor | Question
 - **Suggested resolution:** [optional — what could fix it]
 
 ---
@@ -93,6 +111,25 @@ _New facts in this chapter that affect earlier chapters. Atlas will handle queue
 - **Statement:** [the fact, stated precisely]
 - **Likely affects:** Ch.1, Ch.2, Ch.3
 - **Note for Atlas:** add to Established Facts and queue re-checks
+
+---
+
+## Timeline
+_Travel-time, date, season, and duration claims observed in this file, cross-referenced with what Atlas / prior chapters have established. Omit this section entirely when the chapter contains no such claims. Pure reference data — does not duplicate findings, but contradictions visible here should also appear under Inconsistencies Found above._
+
+**This file:**
+
+| Where | Claim |
+|---|---|
+| Ch.3 ¶4 | "three days from Northgate to the abbey" |
+| Ch.3 ¶12 | "five days have passed since the council" |
+
+**Established (from Atlas / prior chapters):**
+
+| Where | Claim |
+|---|---|
+| Ch.1 ¶7 | "Northgate sits a week's ride from the abbey" ← contradicts Ch.3 ¶4 |
+| Atlas | The council met on day 0 of the story |
 
 ---
 
@@ -108,9 +145,13 @@ _Items actively checked with no issues found._
 
 ## Severity guide
 
+Three tiers. Major and Minor both imply *something is wrong*; Question is for cases where the writer's intent is genuinely unclear.
+
 **Major:** The contradiction directly breaks the story for a reader — a character is in two places, stated dialogue contradicts an established truth, a character knows something impossible. Needs fixing.
 
 **Minor:** A detail drift an attentive reader might catch — slightly different eye color, a small inconsistency in a character's speech habit. Worth noting but won't break the story.
+
+**Question:** A discrepancy that *could* be a slip, *could* be intentional (foreshadowing, an unreliable narrator, a character lying, a deliberate alt-take). Warden cannot tell which from the text alone. Use Question instead of Major or Minor when the call belongs to the writer, not to consistency rules. The writer answers once and the item gets acknowledged (see ROADMAP 2.5); Warden does not raise it again unless the source passage changes.
 
 ## Tone
 
