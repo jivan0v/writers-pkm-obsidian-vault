@@ -62,6 +62,14 @@ Open an issue with a draft entry that follows the existing roadmap item shape: t
 
    Commit the source change *and* the rebuilt archive together so distributed copies stay in sync.
 
+7. Run the structural lint before opening the PR (CI runs the same check):
+
+   ```bash
+   make check
+   ```
+
+   It verifies frontmatter, the guardrails block, archive↔source sync, and key repo paths.
+
 ## Updating documentation
 
 **Every change updates documentation.** Skipping this is the most common gap in contributions, so before opening a PR, walk this checklist and update every file whose trigger condition is met.
@@ -74,6 +82,7 @@ Open an issue with a draft entry that follows the existing roadmap item shape: t
 | **`README.md`** | If any of: install path changes; pipeline diagram needs updating; the "What's inside" table is out of date; a new top-level file is added; a new user-facing feature is shipped. |
 | **`USAGE.md`** | If any writer-facing behavior changes — new convention (e.g. skip-zone markers), new skill mode (e.g. Quill review modes), new severity tier (e.g. Warden's `Question`), new fallback message, new recipe. The handbook must stay in sync with what the skills actually do. |
 | **`CLAUDE.md`** | Rare. Touch only if vault structure changes, a core principle is clarified, or a new top-level workflow rule applies to every session. |
+| **`UPGRADING.md`** | If your change alters the format of files in users' existing vaults (`status.md`, `atlas.md`, report schemas) or requires action on upgrade. Prefer teaching the skill to self-heal the old format; document the healing here. |
 | **`CONTRIBUTING.md`** | Only if the contributor process itself changes — new tooling, new conventions, new "what won't land" entries. |
 
 If the change isn't on the roadmap, skip the ROADMAP update — but the CHANGELOG entry is still required, and the AGENTS / README / USAGE check still applies.
@@ -110,7 +119,7 @@ To save everyone time, here are some change types that won't land:
 - **Required fields in templates** — anything that adds friction to a writer who just wants to draft. Out of scope per principle #2/#3.
 - **Per-skill configuration that has to be set before first use** — defaults must be sensible. Configuration is opt-in.
 - **External service integrations** (cloud storage, Linear, Notion, etc.) without a clear writer-facing benefit. The vault is local-first.
-- **Tests, CI, release tooling for v0** — overkill for a solo project. Revisit when a second contributor appears.
+- **Heavy test suites or release tooling for v0** — overkill for a solo project. The structural lint (`make check`) and its one-job CI workflow are the intended ceiling here; behavioral skill tests and release automation wait until a second contributor appears.
 
 ## Questions?
 

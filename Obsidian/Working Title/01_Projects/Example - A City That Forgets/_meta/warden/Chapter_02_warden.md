@@ -1,58 +1,48 @@
-# Warden — Chapter 02: The Trial
-
-**Status:** ✓ All clear with one Minor note  
-**Checked against:** Atlas, Chapter 01  
-**Skip zones honored:** 0
+# Warden Report — Chapter_02.md
+_Date: 2026-04-25_
+_Atlas version: last updated 2026-04-25_
 
 ---
 
 ## Inconsistencies Found
 
-### Minor — Reeves' medical authority
-
-**Location:** ¶2 ("the trial is voluntary"; Reeves is running it) vs. ¶8 ("She'd noted that... eyes you can trust")  
-**The issue:** This isn't a contradiction, but a narrational gap: how does Maya know Reeves' eyes are trustworthy when she wakes every morning forgetting him? The phrase "She'd noted that" suggests a prior meeting where she *did* write him down as trustworthy, but we're not shown that moment. It's small—this note is consistent with her practice of keeping records—but a future chapter might benefit from showing or referencing that initial trust-building conversation.
-
-**Impact scope:** Low. The reader accepts that Maya has evaluated Reeves before and left herself a note. It doesn't undermine the current chapter.
-
-**Optional:** If you revise for clarity, consider one line where Maya *re-reads* the note about his eyes before or after the appointment. That would show her trust-rebuilding ritual.
+### How does Maya know Reeves' eyes can be trusted?
+- **Location in text:** "\"The trial is voluntary,\" Reeves said. He had—" (¶2)
+- **Issue:** Maya recalls a note — *"eyes you can trust"* — implying a prior meeting with Reeves that the story never shows. Not a contradiction (writing such notes is exactly her practice, per Ch.1), but a narrational gap: the trust-building moment exists only by implication.
+- **Atlas reference:** Characters → Maya → Relationships (Dr. Reeves, "cautious trust, recorded in her book").
+- **Severity:** Minor
+- **Suggested resolution:** Optional — a beat showing Maya reread that note before or after the appointment would surface her trust-rebuilding ritual. Works as-is.
 
 ---
 
-## Continuity vs. Chapter 01
+## Retroactive Facts Detected
 
-### ✓ Timeline check
-- Ch. 01: Maya finds a note saying Dr. Reeves called, offering a trial. Mentions Zara's fear in the morning book.
-- Ch. 02: Maya goes to Reeves' office. Consistent. No date contradiction.
-
-### ✓ Character consistency
-- Maya in Ch. 02: Asks careful questions, listens, suspects Reeves' motivation. Matches Ch. 01's wariness ("trust was a luxury").
-- Zara's fear from Ch. 01 motivates Maya's decision in Ch. 02. The emotional throughline is tight.
-
-### ✓ World rules
-- The compound is consistent with the world's amnesia condition.
-- The voluntary-trial structure makes sense given the city's structure (no central authority shown, individual choice).
+None. The trial's mechanics (compound slows forgetting, side effects, volunteer structure) are new facts, but they affect nothing established in Ch.1. Reported to Atlas as World Rules, not as re-check triggers.
 
 ---
 
-## Retroactive Facts for Atlas
+## Timeline
 
-**The Trial:**
-- Compound is experimental, designed to slow forgetting.
-- Volunteers expected to experience nausea, vivid dreams, and psychological distress (forced memories of trauma).
-- Some volunteers report remembering "most of a day"; others, fragments.
-- It's unclear if the trial will work at scale.
+**This file:**
 
-**Social structure implied:**
-- A hospital exists and runs trials, suggesting some institution.
-- People *choose* medical intervention in this world. Suggests either education or desperation (or both).
-- Reeves' investment in success suggests pressure from above (institutional, financial, or both).
+| Where | Claim |
+|---|---|
+| "That night, Maya made two entries in—" (¶12) | Trial decision recorded "Dr. Reeves' office, Tuesday" |
+
+**Established (from Atlas / prior chapters):**
+
+| Where | Claim |
+|---|---|
+| Ch.1 ¶4 | Maya rereads "Tuesday's entry" mentioning Reeves' call |
+
+No contradiction — the call and the visit are consistent with a same-week sequence.
 
 ---
 
 ## All Clear
+_Items actively checked with no issues found._
 
-✓ No timeline contradictions.  
-✓ Character motivations are consistent.  
-✓ World-rules hold.  
-✓ Zara's arc from Ch. 01 (desperate plea) connects cleanly to Maya's decision here.
+- Timeline vs. Ch.1: ✓ (note about Reeves' call → office visit; no date conflict)
+- Character consistency: ✓ (Maya's careful questioning matches Ch.1's "trust was a luxury"; Zara's torn note motivates the decision)
+- World rules: ✓ (the compound and voluntary-trial structure fit the established amnesia condition)
+- Knowledge consistency: ✓ (Maya acts only on what her notes contain)

@@ -1,78 +1,93 @@
 # Atlas — A City That Forgets
+_Type: Short Story_
+_Last updated: 2026-04-25 through Chapter 03_
+
+---
 
 ## Characters
 
 ### Maya
-- **Role:** Protagonist, nurse at Riverside Hospital
-- **Voice:** Precise, introspective, formal when stressed. Favors short declarative sentences in her notes. Interior monologue is more fluid. Uses contractions in dialogue.
-- **Key trait:** Relies entirely on written word to maintain identity. Trusts text more than memory.
-- **Status:** Entered a medical trial to slow memory loss; beginning to consolidate some memories by Chapter 03.
+- **Location:** Apartment 417, south wing (Ch.3)
+- **Appearance:** — not yet established —
+- **Status:** Three weeks into the memory-consolidation trial; beginning to retain continuous memory (Ch.3)
+- **Knows:** She has been forgetting faster than the city's baseline (Ch.1); the trial's side effects include distress from recovered memories (Ch.2); she has hurt Zara during her decline (Ch.3)
+- **Voice:** Precise, introspective, formal when stressed. Short declarative sentences in her written notes; more fluid in interior monologue. Uses contractions in dialogue. (Ch.1–3)
+  - **Speech markers:** Written notes use imperative self-address ("Don't say yes. Don't say yes.", Ch.1). Repeats key phrases for emphasis. Hedges spoken commitments ("I don't know. Ask me tomorrow.", Ch.3)
+- **Relationships:** Zara — daughter, the anchor of her identity work (Ch.1–3). Dr. Reeves — cautious trust, recorded in her book as "eyes you can trust" (Ch.2). The not-husband — unnamed cohabitant of two years (Ch.1, Ch.3)
+- **Language:** —
 
 ### Zara
-- **Role:** Daughter (age 14)
-- **Voice:** [provisional, derived from Ch.1–2] Direct, emotional. Uses sentence fragments when distressed. Demonstrates unusual maturity when speaking about her mother's condition.
-- **Key trait:** Bears the emotional weight of her mother's forgetting. Scared, but capable of directness that Maya needs.
-- **Status:** Present, living with Maya in apartment 417.
+- **Role:** Maya's daughter, fourteen (Ch.1)
+- **Location:** Apartment 417 (Ch.3)
+- **Appearance:** — not yet established —
+- **Status:** Living with Maya; frightened by her mother's change as much as by her forgetting (Ch.3)
+- **Knows:** Once told Maya she was "a client" to stop her mother's confused questions (Ch.1)
+- **Voice:** Direct, emotional. Sentence fragments when distressed. Unusual maturity about her mother's condition. `[provisional, derived from Ch.1–3]`
+  - **Speech markers:** Short corrective lines ("Zara. Just Zara.", Ch.3). Names feelings plainly ("That's the part that scares me.", Ch.3). `[provisional, derived from Ch.1–3]`
+- **Relationships:** Maya — mother; love complicated by fear of both the forgetting and the recovery (Ch.1, Ch.3)
 
 ### Dr. Reeves
-- **Role:** Physician; oversees the memory-consolidation trial
-- **Voice:** Calm, evasive when discussing side effects. Formal register, careful word choice.
-- **Key trait:** Sympathetic, but driven by the trial's success. Frames necessity as kindness.
-- **Status:** Present in Ch. 02.
+- **Role:** Physician; runs the memory-consolidation trial (Ch.2)
+- **Appearance:** "Kind eyes," per Maya's note (Ch.2)
+- **Status:** Last seen at his office (Ch.2)
+- **Voice:** Calm, careful, evasive on side effects; interrupts to reassure (Ch.2)
+- **Relationships:** Maya — recruiter as much as caregiver; needs volunteers for the trial to succeed (Ch.2)
 
 ### The not-husband (unnamed)
-- **Role:** Implied cohabitant; introduced only through absence and assumption
-- **Status:** Lives with Maya; never named or directly characterized. Functions as emotional geography rather than a person.
+- **Role:** Cohabitant of two years; never named or directly shown (Ch.1, Ch.3)
+- **Status:** Lives in apartment 417's orbit; functions as emotional geography rather than a character. Intentionally blank — do not fill in.
+
+---
 
 ## Locations
 
 ### The City (unnamed)
-- **Geography:** High-rise residential units, organized by zones (south wing, etc.). Hospital present.
-- **Defining feature:** Daily amnesia is universal. Population relies entirely on written notes to maintain continuity.
-- **Established facts:** 
-  - Apartments are numbered (417, 418, etc.) by zone.
-  - Hospitals exist and employ people; continuity is critical for care work.
-  - Medical trials are conducted to develop memory consolidation.
+- **Description:** High-rise residential blocks organized by zones (south wing); numbered apartments; a hospital. Daily amnesia is universal — the population maintains continuity through written notes.
+- **Characters present:** All
+- **Last mentioned:** Ch.3
 
 ### Apartment 417
-- **Residents:** Maya, Zara
-- **Details:** Cream-colored walls, window that doesn't open fully. Bathroom has loose panel where Maya hides her morning book. Kitchen table is where crucial conversations happen.
+- **Description:** Cream-colored walls; a window that doesn't open all the way; loose bathroom panel hiding Maya's morning book; kitchen table where the crucial conversations happen.
+- **Characters present:** Maya, Zara
+- **Last mentioned:** Ch.3
 
 ### Riverside Hospital
-- **Maya's workplace:** She works as a nurse; the job is part of her identity anchor.
+- **Description:** Maya's workplace; nursing requires continuity the forgetting destroys.
+- **Last mentioned:** Ch.2
 
-### Dr. Reeves' Office
-- **Details:** Smells like ammonia. Small furniture. Clinical setting.
+### Dr. Reeves' office
+- **Description:** Smells of ammonia; too-small furniture; clinical.
+- **Characters present:** Dr. Reeves
+- **Last mentioned:** Ch.2
+
+---
+
+## Active Threads
+
+- **The trial:** Maya enrolls in Reeves' memory-consolidation trial — started Ch.2, status: ongoing (working by Ch.3, cost unclear)
+- **Zara's fear of change:** Zara fears the returning Maya is a new person, not a restored one — started Ch.3, status: ongoing (unresolved by design)
+
+---
+
+## World Rules
+
+- **The Forgetting:** Every person in the city wakes with the prior day erased; identity is reconstructed from physical artifacts — established Ch.1
+- **Notes as identity system:** Written notes are the continuity mechanism; Maya reads hers aloud "to lock the words in place" — established Ch.1
+- **The trial's mechanics:** The compound consolidates new memories but cannot restore what's gone; side effects include nausea, vivid dreams, and distress from recovered trauma — established Ch.2
+
+---
 
 ## Established Facts
+_Continuity-critical facts that span multiple chapters. A change to any of these triggers Warden re-checks on affected chapters. Atlas owns this section — only Atlas writes here._
 
-### The Forgetting
-- Every person in the city wakes with the prior day erased.
-- Relationships, jobs, identities must be reconstructed from physical artifacts.
-- It is treated as a systemic condition, not an individual pathology.
+### Maya's accelerated forgetting
+- **Statement:** Maya's memory loss is worse than the city's baseline — she has forgotten Zara's name, which ordinary citizens do not.
+- **Established:** Ch.1 (2026-04-25)
+- **Retroactively applies to:** —
+- **Review status:** Ch.1 ✓
 
-### Notes as Identity System
-- Written notes are the primary mechanism for continuity.
-- People leave notes for themselves and each other.
-- For Maya specifically, the act of reading her notes aloud is a ritual to "lock words in place."
-
-### The Trial
-- Dr. Reeves is testing a medical compound to slow/prevent forgetting.
-- Voluntary enrollment.
-- Side effects include nausea, vivid dreams, and psychological distress (being forced to remember trauma).
-- Maya enrolls by end of Ch. 02.
-
-### Maya's Experience
-- By Ch. 03, three weeks into the trial, Maya is consolidating memories (remembers Zara's name, two-year history with her partner).
-- She experiences this as both gain (remembering her daughter) and loss (seeing the damage the forgetting has done, becoming "someone new").
-
-## Retroactive Facts Detected
-
-None yet. (This is a first read. Any additions to character voice, world-building, or continuity will be logged here on next run.)
-
-## Provisional entries and empty fields
-
-- **Dr. Reeves' first name:** Not established.
-- **The not-husband's identity:** Intentionally left blank. He is never named; his presence is inferred only through domestic proximity.
-- **Zara's last name:** Not established (assume same as Maya's).
-- **Nature of the city's amnesia:** Cause unknown. Described as a condition, not an event or curse. Biological? Social? Not yet specified.
+### The trial's efficacy timeline
+- **Statement:** Three weeks on the compound is enough for continuous-memory consolidation (Zara's name, a two-year history) — but recovery changes the person recovering.
+- **Established:** Ch.3 (2026-04-25)
+- **Retroactively applies to:** —
+- **Review status:** Ch.3 ✓

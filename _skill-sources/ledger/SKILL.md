@@ -34,21 +34,21 @@ Each project's `_meta/` folder contains `status.md` — the file you own and mai
 ```markdown
 # Status — [Novel Name]
 _Type: Novel_
-_Last Ledger run: [YYYY-MM-DD]_
+_Last Ledger run: [YYYY-MM-DD HH:MM]_
 
 ---
 
 ## Files
 
 ### Chapter_01.md
-- Last modified: [YYYY-MM-DD]
-- Atlas:  ✓ [YYYY-MM-DD]
-- Warden: ✓ [YYYY-MM-DD]
-- Quill:  ✓ [YYYY-MM-DD]
-- Lens:   ✓ [YYYY-MM-DD]
+- Last modified: [YYYY-MM-DD HH:MM]
+- Atlas:  ✓ [YYYY-MM-DD HH:MM]
+- Warden: ✓ [YYYY-MM-DD HH:MM]
+- Quill:  ✓ [YYYY-MM-DD HH:MM]
+- Lens:   ✓ [YYYY-MM-DD HH:MM]
 
 ### Chapter_03.md
-- Last modified: [YYYY-MM-DD]   ← newer than last run
+- Last modified: [YYYY-MM-DD HH:MM]   ← newer than last run
 - Atlas:  pending ⚠️
 - Warden: pending ⚠️
 - Quill:  pending ⚠️
@@ -73,19 +73,44 @@ _Written by Atlas only when a new Established Fact affects earlier chapters._
 ```markdown
 # Status — [Story Name]
 _Type: Short Story_
-_Last Ledger run: [YYYY-MM-DD]_
+_Last Ledger run: [YYYY-MM-DD HH:MM]_
 
 ---
 
 ## [Story Name].md
-- Last modified: [YYYY-MM-DD]
-- Atlas:  ✓ [YYYY-MM-DD]
+- Last modified: [YYYY-MM-DD HH:MM]
+- Atlas:  ✓ [YYYY-MM-DD HH:MM]
 - Warden: pending ⚠️
-- Quill:  ✓ [YYYY-MM-DD]
+- Quill:  ✓ [YYYY-MM-DD HH:MM]
 - Lens:   pending ⚠️
 ```
 
 Short stories are tracked as a single unit — no chapter-by-chapter breakdown unless the story has named sections that warrant it.
+
+### For a Shared-Universe Collection
+
+Same shape as a novel, but each `SS_*.md` story is tracked as its own unit (a story is reviewed whole, like a standalone short):
+
+```markdown
+# Status — [Collection Name]
+_Type: Collection_
+_Last Ledger run: [YYYY-MM-DD HH:MM]_
+
+---
+
+## Files
+
+### SS_FirstStory.md
+- Last modified: [YYYY-MM-DD HH:MM]
+- Atlas:  ✓ [YYYY-MM-DD HH:MM]
+- Warden: ✓ [YYYY-MM-DD HH:MM]
+- Quill:  pending ⚠️
+- Lens:   pending ⚠️
+```
+
+### Why timestamps, not dates
+
+Record all times to the minute (`YYYY-MM-DD HH:MM`, from the file's modification time). Date-only precision silently loses same-day edits: the writer revises at 09:00, the pipeline runs at 10:00, they revise again at 11:00 — tomorrow's scan compares equal dates and wrongly calls the file up to date. Older `status.md` files may still carry date-only entries; treat any file modified on its recorded date as pending (be conservative), and upgrade entries to minute precision as you rewrite them.
 
 ## How to run
 
@@ -93,8 +118,8 @@ Short stories are tracked as a single unit — no chapter-by-chapter breakdown u
 
 For each project under `01_Projects/`:
 1. Read `_meta/status.md` (create it if it doesn't exist yet)
-2. Check the modification date of each story file against the date recorded in `status.md`
-3. If a file is newer than its last recorded run date, mark all four agents as `pending ⚠️` for that file
+2. Check the modification timestamp of each story file against the timestamp recorded in `status.md` (see "Why timestamps, not dates" above)
+3. If a file is newer than its last recorded run timestamp, mark all four agents as `pending ⚠️` for that file
 4. Also check the Retroactive Re-checks section for any outstanding Warden queues
 
 If `status.md` doesn't exist yet for a project, create it and treat all files as new (all agents pending).
@@ -133,10 +158,12 @@ Execution sequence:
 2. For each pending file, in order:
    - **Invoke the Warden skill** for this file
    - **Invoke the Quill skill** for this file
-   - **Invoke the Lens skill** for this file
-3. After each agent completes, mark it as done in `status.md` with today's date
+   - **Invoke the Lens skill** for this file — **in a fresh subagent when available** (see below)
+3. After each agent completes, mark it as done in `status.md` with the current timestamp
 
 To invoke a skill, use the Skill tool with the skill name (e.g., `atlas`, `warden`, `quill`, `lens`).
+
+**Why Lens gets a fresh subagent:** Lens represents a first-time reader, but by the time it runs in a pipeline session, this conversation already contains Atlas data, Lore content, and the other agents' findings — the read is warm, not cold. When a subagent mechanism is available (e.g., the Task/Agent tool), run Lens in one, pointed only at the Lens skill and the file under review, so it reads with genuinely fresh eyes. If no subagent is available, invoke Lens normally — it will disclose the warm read in its own report header.
 
 ### Step 4 — Session report
 
@@ -162,10 +189,11 @@ Update `status.md` after every agent run. Keep it accurate — it is the single 
 
 The Retroactive Re-checks section is written by Atlas only. Ledger reads it to surface pending re-checks in the report; Ledger does not write to it.
 
-## Novel vs. Short Story logic
+## Project type logic
 
-Detect type from the project structure:
-- A project with multiple `.md` files (besides lore/meta files) is a **Novel** — track per file
-- A project with a single main `.md` file is a **Short Story** — track as one unit
+Detect type from the project structure — three types, matching Atlas and `/new-project`:
+- Story files prefixed `SS_` (usually alongside a project-level `Lore/` folder) → **Shared-Universe Collection** — track each `SS_*.md` as its own unit
+- Multiple chapter-style `.md` files (besides lore/meta files) → **Novel** — track per file
+- A single main `.md` file → **Short Story** — track as one unit
 
-When uncertain, ask the user.
+When uncertain, ask the user. If `status.md` already records a `_Type:_`, trust it over re-detection.

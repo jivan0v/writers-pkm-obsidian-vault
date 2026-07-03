@@ -23,6 +23,11 @@ _media/
 *.mp4
 *.mov
 
+# Personal writing — this repo is public; these drafts stay local.
+Obsidian/Working Title/00_Scratchpad/Fragments/SS_About Telepaths.md
+Obsidian/Working Title/00_Scratchpad/Fragments/SS_TSO.md
+Obsidian/Working Title/00_Scratchpad/Fragments/SS_Soldier Crash in Strange Planet.md
+
 # Claude Code local state
 .claude/
 

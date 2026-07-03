@@ -1,5 +1,5 @@
 # Atlas — [Project Name]
-_Type: Novel | Short Story | Shared-Universe Short_
+_Type: Novel | Short Story | Shared-Universe Collection_
 _Last updated: —_
 
 > All sections and fields below are optional. Atlas will populate them as the story unfolds. Do not pre-fill; let facts accumulate from your actual writing and from `Lore/`.

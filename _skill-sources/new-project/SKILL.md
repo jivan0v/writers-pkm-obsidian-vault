@@ -144,7 +144,7 @@ Do not invoke `/atlas` yourself. The writer decides when to run it — typically
 ## Edge cases
 
 - **Vault folder renamed.** If `Obsidian/Working Title/` does not exist, list `Obsidian/` and ask the user which folder is their vault. Don't guess.
-- **Templates missing or partial.** If any of the four files (`templates/_meta/atlas.md`, `templates/_meta/status.md`) is missing, stop and report — do not improvise.
+- **Templates missing or partial.** If either of the two `_meta/` stubs (`templates/_meta/atlas.md`, `templates/_meta/status.md`) is missing, stop and report — do not improvise.
 - **Title collision with a different type.** If the user already has `01_Projects/Foo/` as a novel and asks to create `Foo` as a short story, abort per step 2 — names must be unique under `01_Projects/`.
 - **Adding a story to an existing collection.** Out of scope. This skill creates *new* project folders. Tell the user to create the story file directly inside the existing collection folder.
 - **Promoting a scratchpad fragment.** Out of scope. This skill does not move files from `00_Scratchpad/`. Tell the user to move the fragment manually, then run this skill if they need a project folder around it (or just create the folder by hand — that's fine too).

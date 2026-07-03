@@ -1,5 +1,5 @@
 # Status — [Project Name]
-_Type: Novel | Short Story_
+_Type: Novel | Short Story | Collection_
 _Last Ledger run: —_
 
 > Ledger maintains this file. Do not edit by hand while a Ledger session is in progress. Fields marked `—` will populate on the first `/ledger` run.

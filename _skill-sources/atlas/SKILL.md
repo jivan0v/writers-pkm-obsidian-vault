@@ -126,7 +126,7 @@ When Atlas detects a new fact in a chapter that retroactively affects earlier ch
 
 ```markdown
 # Atlas — [Project Name]
-_Type: Novel | Short Story_
+_Type: Novel | Short Story | Shared-Universe Collection_
 _Last updated: [YYYY-MM-DD] through [Chapter X / story fragment name]_
 
 ---
@@ -206,7 +206,7 @@ Append only. Never edit existing entries. Add a new block each session.
 
 ### Update after new writing
 1. Read the new or modified file(s)
-2. Read the current `atlas.md` and any relevant `Lore/` files
+2. Read the current `atlas.md` and any relevant `Lore/` files. If the header uses legacy vocabulary or an older shape (e.g. `_Type: Shared-Universe Short_`, or a missing `_Type:` line), normalize it to the current structure as part of this update — headers self-heal, content is never dropped in the process
 3. Update characters, locations, threads, and world rules **in place**
 4. If any new fact retroactively affects earlier chapters:
    - Add it to Established Facts with review status pending for affected chapters

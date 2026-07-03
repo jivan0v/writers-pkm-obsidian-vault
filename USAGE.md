@@ -332,7 +332,7 @@ You don't have to do anything special — just write whatever you write. The sys
 ## Inconsistencies Found
 
 ### Elena's eye color
-- **Location in text:** Ch.3 ¶7
+- **Location in text:** "Her grey eyes caught the lantern light—" (¶7)
 - **Issue:** Described as "grey" here; established as "green" in Ch.1 ¶2.
 - **Atlas reference:** Characters → Elena → Appearance ("green eyes, green-grey in low light").
 - **Severity:** Minor
@@ -403,7 +403,7 @@ _Mode: drafting (source: default)_
 ## Major Suggestions
 
 ### Tense slip
-- **Location:** Ch.3 ¶4
+- **Location:** "The abbot crossed the courtyard before dawn—" (¶4)
 - **Issue:** Past tense breaks to present mid-paragraph.
 - **Suggestion:** Either commit to present (rare for this novel) or revert to past.
 
@@ -475,12 +475,13 @@ Quill compares each character's dialogue and inner monologue against the **Voice
 ```markdown
 # Lens Report — Chapter_03.md
 _Date: 2026-04-25_
+_Read: cold_
 _Reading position: read Ch.1–2 in full before this_
 
 ## Reader Confusion Points
 
 ### Who is Pell?
-- **Location:** Ch.3 ¶1
+- **Location:** "Pell was waiting at the gate when—" (¶1)
 - **Issue:** Pell is named in the first line of the chapter as if I should know who he is. I don't think we've met him on the page. I went back to check — no, he's not in Ch.1 or Ch.2.
 - **Severity:** Major
 - **Suggestion:** Either introduce Pell with a beat of context here, or add him to an earlier chapter.
@@ -488,7 +489,7 @@ _Reading position: read Ch.1–2 in full before this_
 ## Pacing Notes
 
 ### The market scene drags
-- **Location:** Ch.3 ¶8–14
+- **Location:** "The market unfolded in rows of salt-fish—" (¶8–14)
 - **Observation:** Six paragraphs of stalls and sounds before anything happens. I felt my attention drift around ¶12.
 
 ## What Works
@@ -570,9 +571,17 @@ In Lens reports. Tells you what Lens read before the chapter under review (e.g. 
 
 In any report. Means the assistant *would* have checked X but Atlas didn't have the data, so it didn't pretend. The fix is usually to fill in the missing Atlas section (or write more chapters so Atlas can populate itself).
 
-### `Ch.3 ¶7`
+### `"first words of the paragraph—" (¶7)`
 
-Location reference. Chapter 3, paragraph 7. Used everywhere the assistants point at a specific spot in your text.
+Location reference: a short verbatim quote of the paragraph's opening words, plus the paragraph number. The quote is the real anchor — paragraph numbers go stale as soon as you revise, but the quoted words survive edits and stay searchable. Used everywhere the assistants point at a specific spot in your text.
+
+### `_Read: cold_` / `_Read: warm — prior story context in session_`
+
+Header line in Lens reports. *Cold* means Lens read your chapter with no prior story knowledge in the session — a true fresh-reader pass. *Warm* means the session already contained Atlas or Lore content (typical mid-pipeline), so treat "fresh reader" reactions with a grain of salt. Ledger runs Lens in a separate context when it can, precisely to keep reads cold.
+
+### `(depends on reading order)`
+
+A tag on Lens confusion points in shared-universe collections. The passage leans on another story in the universe; if readers are guaranteed to read in order, you can dismiss it.
 
 ### `<!-- skip-start -->` / `<!-- skip-end -->` (and `quill:` / `warden:` variants)
 

@@ -1,5 +1,7 @@
 # Claude Instructions – Writer's PKM Workspace
 
+> **Agents: read [`AGENTS.md`](AGENTS.md) first.** It is the single-file bootstrap for this repo — full layout, shipped state, roadmap, and working conventions (including the documentation-update checklist). This file covers only per-session vault rules. Run `make check` before considering any change to the skills or archives done.
+
 > **Template note:** this file is meant to be personalized. Fill in the `## Language`, `## Voice`, and `## Preferences` sections at the bottom, and edit the rest to match your own project setup.
 
 ## Core principles

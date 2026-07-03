@@ -126,11 +126,13 @@ Sharpen the existing skills without expanding scope.
 ### 3.4 Multi-language personalization pattern — S
 **Why:** Earlier draft had Spanish-specific notes baked into skills. We removed them for the public template. But the underlying need — translation-artifact awareness for non-native-English writers — is real. Add a clean, generic pattern: user declares a `writing-support-languages` list in CLAUDE.md; Quill and Lens reference that variable instead of hard-coding any language.
 
-### 3.5 Ledger reliability fixes — S
+### 3.5 Ledger reliability fixes — S — **Partially shipped**
 **Why:** Three small but real bugs in Ledger's change detection.
 - **Trust the Type field.** Ledger detects novel vs. short story by counting `.md` files, which mis-classifies shared-universe collections (many `SS_*.md` files looks like a novel). The Type is already in `status.md`, set at scaffolding time. Use it; fall back to file-count only when Type is missing.
 - **Content-hash change detection.** Mtime-based detection breaks on `git checkout`, file moves, or vault copies — files appear "changed" when they aren't. Store a hash of each tracked file alongside its last-run date and compare hashes.
 - **Deletion handling.** Spec is silent on what happens when a tracked file is deleted. Ledger should detect the absence, ask whether to drop the row or archive its reports under `_meta/<skill>/_archive/`, and never silently lose review history.
+
+**Shipped (partial):** Type-field trust (Ledger now recognizes all three project types — collections detected via `SS_` prefix, `_Type:` in `status.md` trusted over re-detection — plus a Collection `status.md` template). Bonus fix outside the original list: all `status.md` timestamps upgraded to minute precision (`YYYY-MM-DD HH:MM`) because date-only comparison silently missed same-day edits. Still open: content-hash change detection, deletion handling.
 
 ### 3.6 Atlas watermark + incremental ingest — M
 **Why:** Atlas re-reads every chapter and every Lore/ file on every run. For long novels this is expensive. Record `last fully ingested through: Ch.7 (date)` in `atlas_history.md`; subsequent runs ingest only changed/new chapters. `Lore/` is always re-read (it's the canonical source and small). Pairs with 3.5 — uses the same content-hash mechanism.
@@ -154,8 +156,9 @@ Sharpen the existing skills without expanding scope.
 Each skill honors the markers in its domain. Lens does *not* honor them — readers see whatever's on the page.
 **Shipped:** Three marker pairs. `quill:` honored by Quill only; `warden:` honored by Warden only; generic honored by Atlas, Quill, Warden. Lens explicitly does not honor any skip marker (and the SKILL.md says so). Parsing rules formalized identically across the three honoring skills (markers on their own line; nearest-match start-to-end; no nesting; malformed markers flagged but don't fail; `_Skip zones honored: N_` recorded in the report header / `atlas_history.md` entry, omitted when zero). Inside any skipped region, suspend *all* checks for that skill — including Warden's timeline claims and Atlas's provisional-voice derivation. `atlas.skill`, `quill.skill`, `warden.skill`, `lens.skill` archives rebuilt. `USAGE.md` recipe section updated with the full pattern and example, plus two new Conventions entries for the markers and the header line.
 
-### 3.10 Paragraph-anchored output schema — S
+### 3.10 Paragraph-anchored output schema — S — **Shipped**
 **Why:** Long chapters → long reports → hard to navigate. Each Warden, Quill, and Lens finding should anchor to (a) a paragraph number, (b) a short quoted snippet (≤ 12 words). Warden and Lens already do this loosely; formalize the schema across all three. Side benefit: stable paragraph anchors enable acknowledgement ids (2.5).
+**Shipped:** "Anchoring findings" convention formalized identically in Warden, Quill, and Lens: every finding quotes the first 5–10 words of the relevant paragraph verbatim, with the ¶ number as a secondary hint (`"The abbey gates were already shut when—" (¶12)`). Rationale stated in each skill: the quote survives revision, the number is only a same-day convenience. Output schemas updated; Quill's Phrasing/Vocabulary tables exempt (they already quote text). USAGE.md Conventions entry rewritten.
 
 ### 3.11 Lens reader-experience refinements — S
 **Why:** Two upgrades to Lens's report shape, both reader-grounded.

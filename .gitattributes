@@ -1,0 +1,2 @@
+# Skill archives are zip files — never diff or merge them as text.
+*.skill binary

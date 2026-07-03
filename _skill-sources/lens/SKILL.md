@@ -53,6 +53,19 @@ The other skills support `<!-- skip-start -->` / `<!-- skip-end -->` (and skill-
 
 Treat skip markers as ordinary HTML comments — they render invisibly in Obsidian and don't appear in the prose the reader sees. Do not mention skip markers in the report.
 
+## Cold reads and warm reads
+
+Lens's value depends on genuinely fresh eyes. If this conversation already contains Atlas content, Lore files, or other agents' findings — typical when Ledger runs the full pipeline in one session — you are reading warm: your reactions are contaminated by knowledge a real reader doesn't have. Two rules:
+
+- **Actively disregard** what you learned earlier in the session. React only to what's on the page. If something makes sense to you *only* because of session context, that is a confusion point — flag it.
+- **Disclose it.** Add to the report header: `_Read: cold_` when the session contained no prior story context, `_Read: warm — prior story context in session_` otherwise. The writer should know how much to trust the "fresh" in fresh reader.
+
+(When Ledger orchestrates the pipeline, it runs Lens in a fresh subagent where available, precisely to keep this read cold.)
+
+## Shared-universe collections
+
+Treat each story as standalone-readable by default — a reader may meet the collection in any order, and nothing guarantees they've read the other stories. Read only the story under review; do not read the collection's other stories or its shared `Lore/`. When a passage clearly leans on another story in the universe, flag it as a confusion point but tag it `(depends on reading order)` — the writer can dismiss it if reading order is guaranteed in publication.
+
 ## Handling long novels
 
 For early chapters (Ch.1–5 or so), read all preceding chapters in full to build an accurate reader memory.
@@ -93,13 +106,20 @@ For short stories, apply heightened scrutiny to everything above. In a short sto
 - The ending must resonate — it carries more weight than a chapter ending
 - There is less room to recover from a slow middle
 
+## Anchoring findings
+
+Paragraph numbers go stale the moment the writer revises. Anchor every finding to the text itself: quote the first 5–10 words of the relevant paragraph verbatim, then give the paragraph number as a secondary hint — `"Nobody had told her about the—" (¶9)`. The quote survives edits; the number speeds up finding it today.
+
 ## Output
 
-Write your findings to `_meta/lens/[filename]_lens.md`. Use this structure:
+Write your findings to `_meta/lens/[filename]_lens.md`. List Reader Confusion Points in reading order — the order the reader hits them — not by severity; a Lens report is a walkthrough of the reading experience. If Minor confusion points exceed ~8, keep the 8 most disruptive and close the section with `N further minor notes omitted — ask for the full list.`
+
+Use this structure:
 
 ```markdown
 # Lens Report — [filename]
 _Date: [YYYY-MM-DD]_
+_Read: cold | warm — prior story context in session_
 _Reading position: [e.g., "read Ch.1–2 in full before this" / "read Ch.1 summary + Ch.5–6 in full" / "standalone short story"]_
 
 ---
@@ -107,7 +127,7 @@ _Reading position: [e.g., "read Ch.1–2 in full before this" / "read Ch.1 summa
 ## Reader Confusion Points
 
 ### [Short title]
-- **Location:** [paragraph or approximate position]
+- **Location:** ["first 5–10 words of the paragraph—" (¶N) — see Anchoring findings]
 - **Issue:** [what a reader would not understand, and why]
 - **Severity:** Major | Minor
 - **Suggestion:** [what information is missing or where it could be introduced earlier]

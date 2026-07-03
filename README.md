@@ -18,9 +18,10 @@ If you write novels or short stories — especially across multiple projects or 
 | `_skill-sources/` | Editable source for the writing skills (one folder per skill, each with a `SKILL.md`). |
 | `*.skill` | Packaged (zipped) distributable versions of each skill, rebuilt from the sources. |
 | `templates/` | Optional-everything stub files (`_meta/`, `Lore/` notes) that `/new-project` copies when scaffolding a new project. |
-| `Makefile` | One-liner installer (`make install`) and archive packager (`make package`). Run `make help` to see every target. |
+| `Makefile` | One-liner installer (`make install`), archive packager (`make package`), and structural lint (`make check` — also run by CI). Run `make help` to see every target. |
 | `CLAUDE.md` | Instructions Claude Code reads at the start of every session — vault conventions and where you personalize voice/language preferences. |
 | `USAGE.md` | Writer's handbook. Detailed walkthrough for an amateur user — every skill, every convention, recipes for common situations. |
+| `UPGRADING.md` | How to update an existing clone and vault to the current version — what self-heals, what needs a decision. |
 
 ## The skill pipeline
 
@@ -64,6 +65,8 @@ A sixth skill sits outside the pipeline:
 Each project has a `_meta/` subfolder where all four non-Ledger skills write their outputs (e.g. `_meta/warden/Chapter_03_warden.md`). Ledger owns `_meta/status.md`.
 
 ## Install
+
+> **Already using an earlier version?** See **[UPGRADING.md](UPGRADING.md)** — pull, `make install`, run `/ledger`, and the vault files update themselves.
 
 1. **Clone or generate from this repo.**
    ```bash

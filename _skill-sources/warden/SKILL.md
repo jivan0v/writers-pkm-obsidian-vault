@@ -70,7 +70,7 @@ Per-section fallbacks:
 
 Project-wide:
 
-- **No Atlas at all.** Stop. Tell the user to run Atlas first. Warden cannot do its primary job without a baseline.
+- **No Atlas at all.** Warden's Atlas-dependent checks (character consistency, geography, world rules, retroactive facts) can't run without a baseline. Offer the user two options: run Atlas first (recommended), or proceed with an **in-file-only review** — internal timeline, sequence of events, and ambiguity flags, which need no baseline. If the user chooses in-file-only, record it in the report header: `_Scope: in-file only — no Atlas_`.
 
 In-file checks (timeline within this file, sequence of events, ambiguity flags) do not require Atlas and run regardless.
 
@@ -104,6 +104,14 @@ In-file checks (timeline within this file, sequence of events, ambiguity flags) 
 **For shared-universe short stories**
 - Also check against the shared `Lore/` folder at the project level for contradictions with other stories in the same universe
 
+## Anchoring findings
+
+Paragraph numbers go stale the moment the writer revises — and revision is the whole point of a report. Anchor every finding to the text itself: quote the first 5–10 words of the relevant paragraph verbatim, then give the paragraph number as a secondary hint — `"The abbey gates were already shut when—" (¶12)`. The quote survives edits; the number speeds up finding it today.
+
+## Finding order and volume
+
+Order Inconsistencies Found by severity — Major first, then Question, then Minor; within a tier, in order of appearance. Report every Major and Question. If Minor findings exceed ~8, keep the 8 a reader is most likely to notice and close the section with one line: `N further minor notes omitted — ask for the full list.` A report the writer actually reads beats an exhaustive one they skim.
+
 ## Output
 
 Write your findings to `_meta/warden/[filename]_warden.md`. Use this structure:
@@ -119,7 +127,7 @@ _Skip zones honored: N_  ← omit this line when N is zero
 ## Inconsistencies Found
 
 ### [Short descriptive title]
-- **Location in text:** [paragraph number or quoted passage]
+- **Location in text:** ["first 5–10 words of the paragraph—" (¶N) — see Anchoring findings]
 - **Issue:** [precise description of the contradiction]
 - **Atlas reference:** [what Atlas says / where it was established]
 - **Severity:** Major | Minor | Question

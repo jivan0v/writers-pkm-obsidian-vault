@@ -1,51 +1,58 @@
-# Warden — Chapter 03: The Return
-
-**Status:** ✓ All clear with one Question flagged  
-**Checked against:** Atlas (this project), prior chapters  
-**Skip zones honored:** 0
+# Warden Report — Chapter_03.md
+_Date: 2026-04-25_
+_Atlas version: last updated 2026-04-25_
 
 ---
 
 ## Inconsistencies Found
 
-### Minor — Character naming
+### Is Maya's guilt remembered or inferred?
+- **Location in text:** "Today I remembered Zara's name without—" (¶16)
+- **Issue:** Maya writes she is *"finally seeing what I've put her through."* Is this a recovered memory of specific harm, or an inference from Zara's present distress? The compound consolidates *new* memories and "won't give you back what's already gone" (Ch.2 ¶2) — so a recovered memory of past harm would strain the established mechanics, while an inference is fully consistent. The text supports either reading.
+- **Atlas reference:** World Rules → trial mechanics ("cannot restore what's gone", Ch.2).
+- **Severity:** Question
+- **Suggested resolution:** Writer's call — either ground the guilt in something specific Zara says or does, or make the inference explicit. The choice shapes whether the ending reads as clarity or as another kind of forgetting.
 
-**Location:** ¶2 ("Just Zara") vs. Atlas voice profile  
-**The issue:** Maya's note in Ch. 01 refers to "my daughter Zara," but Zara's correction in Ch. 03 ("Just Zara") suggests her full name might be different. The Atlas character profile lists only "Zara," with no last name established. This is consistent; the "just" is Zara rejecting Maya's formality, not correcting a misnaming. *Mark as clear.*
+### "Zarah" — slip or spelling of a fuller name?
+- **Location in text:** "Zara. Just Zara." (¶8)
+- **Issue:** Maya says "Zarah"; Zara corrects her. Atlas records only "Zara," so the correction is consistent — reading it as Zara rejecting a fuller or misremembered form, not a continuity error.
+- **Atlas reference:** Characters → Zara.
+- **Severity:** Minor
+- **Suggested resolution:** None needed — noting so the exchange isn't re-flagged on future runs.
 
-### Question — Trauma as fuel for recovery
+---
 
-**Location:** ¶8 ("knowing what she'd put her through")  
-**The issue:** Maya realizes during this chapter that the compound is "working" (she remembers Zara, two years) but that Zara's response is sadness, not joy. The narrative reads this as Maya "finally seeing what I've put her through." But is this Maya's *new* memory talking, or her *old* guilt resurfacing? In other words: does she remember hurting Zara, or is she inferring the hurt from Zara's present distress? The mechanics matter to whether we read this as clarity or as another kind of forgetting.
+## Retroactive Facts Detected
 
-**Impact scope:** This ambiguity affects how we understand Maya's character arc across all three chapters. If she's remembering specific harm, her guilt is anchored. If she's inferring it, her guilt is more abstract—and Zara's fear ("you're already changing") lands differently.
-
-**Options for revision:**
-1. Add a half-memory to make the harm specific (e.g., "I remembered forgetting her name in front of a teacher").
-2. Lean into the abstraction—have Maya explicitly state "I don't remember what I did, but I can see it in her face."
-3. Have Zara name something specific that will ground the guilt.
-
-Writer's call—this Question doesn't indicate error, just ambiguity that shapes the ending's emotional weight.
+### The trial's efficacy timeline
+- **Statement:** Three weeks on the compound produces continuous-memory consolidation (Zara's name, a two-year history) — and recovery changes the person recovering.
+- **Likely affects:** none — forward-looking; no earlier chapter contradicts it
+- **Note for Atlas:** add to Established Facts; no re-checks needed
 
 ---
 
 ## Timeline
 
-No travel-time or date claims in this chapter.
+**This file:**
 
----
+| Where | Claim |
+|---|---|
+| "Three weeks into the trial, Maya woke—" (¶1) | Three weeks elapsed since the Ch.2 enrollment |
 
-## Retroactive Facts for Next Atlas Run
+**Established (from Atlas / prior chapters):**
 
-**Maya's memory consolidation:** By three weeks into the trial, she's remembering continuous narrative (Zara's name, two-year history). This is a fact about the trial's efficacy and timeline. Atlas should note it.
+| Where | Claim |
+|---|---|
+| Ch.2 ¶12 | Enrollment recorded "Tuesday" |
 
-**Identity shift as cost:** The last beat ("becoming someone new") suggests that memory consolidation isn't simple restoration. Consider a new Established Fact: "Recovery in this world has psychological cost."
+Consistent — no contradiction between the three-week jump and anything established.
 
 ---
 
 ## All Clear
+_Items actively checked with no issues found._
 
-- Timeline is consistent within the chapter and across all three chapters.
-- Character voices match Atlas profiles (or mark drift as intentional).
-- No world-rule violations.
-- No implied facts contradict prior chapters.
+- Timeline: ✓ (three-week jump is clean across all three chapters)
+- Character locations: ✓ (Maya and Zara in apartment 417 throughout)
+- World rules: ✓ (the compound behaves as Ch.2 described — consolidation, not restoration, per the Question above)
+- Character consistency: ✓ (Zara's directness matches her provisional voice profile; Maya's hedged commitments match hers)

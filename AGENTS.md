@@ -2,6 +2,8 @@
 
 Single-file context for any agent picking up work in this repo. Read this first; everything else is detail.
 
+_Last verified: 2026-07-03. If §3/§7/§8 look stale against `CHANGELOG.md` or `ROADMAP.md`, trust those files and update this one (plus this date line)._
+
 ---
 
 ## 1. What this project is
@@ -33,15 +35,18 @@ PKM/
 ├── CLAUDE.md                  ← per-session instructions Claude Code auto-loads
 ├── README.md                  ← user-facing intro + install (Mermaid pipeline diagram, USAGE callout)
 ├── USAGE.md                   ← writer's handbook (amateur-user-facing detail per skill + recipes)
+├── UPGRADING.md               ← user-facing upgrade guide (what self-heals, what needs a decision)
 ├── ROADMAP.md                 ← tiered enhancement plan (source of truth for "what's next")
 ├── CHANGELOG.md               ← shipped changes (Keep-a-Changelog format)
 ├── CONTRIBUTING.md            ← philosophy, how to propose changes, conventions
-├── Makefile                   ← `make install` / `make package` / `make help`
+├── Makefile                   ← `make install` / `make package` / `make check` / `make help`
 ├── LICENSE                    ← MIT, copyright Eugenio Valdes
+├── .gitattributes             ← marks `*.skill` archives as binary
 │
 ├── .github/
 │   ├── ISSUE_TEMPLATE/        ← bug, skill_proposal, roadmap_addition, question, config.yml
-│   └── PULL_REQUEST_TEMPLATE.md
+│   ├── PULL_REQUEST_TEMPLATE.md
+│   └── workflows/check.yml    ← CI: runs `make check` on push/PR
 │
 ├── Obsidian/Working Title/    ← the vault itself (rename freely)
 │   ├── .obsidian/             ← Obsidian config, plugins
@@ -133,8 +138,11 @@ What's actually shipped (see `CHANGELOG.md` Unreleased and `ROADMAP.md` for the 
 - 2.7 Quill review-depth modes (`drafting` / `balanced` / `polish`) with `_meta/quill/config.yml` precedence
 
 **Atlas + skill refinements (Tier 3) — partial**
+- 3.5 *(partial)* Ledger reliability: three-type detection (collections via `SS_` prefix), `_Type:` trusted over re-detection, Collection status template, minute-precision timestamps (content-hash + deletion handling still open)
 - 3.8 Empty-Atlas fallbacks across consumer skills + Atlas provisional voice derivation (`[provisional, derived from Ch.X–Y]`)
 - 3.9 Skip-zone marker convention (`<!-- skip-start --> ... <!-- skip-end -->` plus skill-specific variants; Lens deliberately ignores them)
+- 3.10 Quote-anchored findings (verbatim first-words quote + ¶ number) across Warden/Quill/Lens
+- Skill-quality pass (2026-07-03): Lens cold/warm read disclosure + Ledger runs Lens in a fresh subagent; Lens collection reading-order stance; Warden in-file-only mode when Atlas absent; Warden/Lens minor-finding caps; Quill may suggest cuts + anti-thesaurus/anti-machine-tics section
 
 **Public-repo polish (Tier 6) — mostly complete**
 - 6.1 Mermaid pipeline diagram in README + prominent USAGE.md callout
@@ -144,6 +152,8 @@ What's actually shipped (see `CHANGELOG.md` Unreleased and `ROADMAP.md` for the 
 - 6.5 Tightened `description:` frontmatter across all six skills (consistent four-part shape: what / when / Triggers list / sequencing note)
 - 6.6 Atlas `SKILL.md` path-diagram fix
 - 6.7 `USAGE.md` writer's handbook
+- `make check` structural lint + CI workflow (`.github/workflows/check.yml`) — verifies skill frontmatter, guardrails blocks, archive↔source sync, key paths
+- `AGENTS.md` bootstrap pointer at the top of `CLAUDE.md`; `.gitattributes` for `*.skill`
 
 `01_Projects/Example - A City That Forgets/` is the only populated project. `02_Research/` is empty (`.gitkeep` only).
 
@@ -153,7 +163,7 @@ Tier-by-tier remaining work, lowest-dependency first within each:
 
 1. **Foundations** — *fully shipped.*
 2. **Pipeline flexibility** — 2.1 Pipeline Modes (Draft / Continuity / Polish / Full Audit) [unlocks 2.5 + 2.7 pipeline integration]; 2.2 Warden options + impact scope; 2.3 `/wrap` session-end skill; 2.4 Ledger dashboard refinement; 2.5 acknowledgement convention [depends on 3.10].
-3. **Atlas + skill refinements** — 3.1 temporal voice evolution; 3.2 short-story/novel handling alignment; 3.3 output file accumulation policy; 3.4 multi-language personalization pattern; 3.5 Ledger reliability fixes [unlocks 3.6]; 3.6 Atlas watermark + incremental ingest [depends on 3.5, unlocks 3.12]; 3.7 decouple Warden→`atlas.md` writes; 3.10 paragraph-anchored output schema; 3.11 Lens first/last impression + genre signaling; 3.12 Atlas moments index [depends on 3.6].
+3. **Atlas + skill refinements** — 3.1 temporal voice evolution; 3.2 short-story/novel handling alignment; 3.3 output file accumulation policy; 3.4 multi-language personalization pattern; 3.5 Ledger reliability remainder (content-hash detection, deletion handling) [unlocks 3.6]; 3.6 Atlas watermark + incremental ingest [depends on 3.5, unlocks 3.12]; 3.7 decouple Warden→`atlas.md` writes; 3.11 Lens first/last impression + genre signaling; 3.12 Atlas moments index [depends on 3.6]. (3.10 shipped.)
 4. **Obsidian leverage** — 4.1 YAML frontmatter + Dataview dashboards; 4.2 opinionated default `.obsidian/` config; 4.3 Templater note templates [depends on 4.2]; 4.4 daily-notes integration [depends on 2.3 + 4.2].
 5. **Shared-universe architecture** — 5.1 `03_Universe_Atlas/` with dual ingestion; 5.2 promotion pipeline [depends on 5.1].
 6. **Public-repo polish** — 6.3 per-skill `version:` frontmatter (CHANGELOG already shipped).
@@ -176,6 +186,7 @@ Every change updates documentation in the same commit (or short series) as the c
 | `README.md` | If install path changes, pipeline diagram needs updating, "What's inside" table is stale, new top-level file added, or a user-facing feature ships. |
 | `USAGE.md` | If any writer-facing behavior changes — new convention, new skill mode, new severity tier, new fallback message, new recipe. The handbook must match what the skills actually do. |
 | `CLAUDE.md` | Rare. Vault structure changes, core-principle clarifications, new top-level workflow rules. |
+| `UPGRADING.md` | If a change alters the format of files in users' existing vaults (`status.md`, `atlas.md`, report schemas) or requires action on upgrade. Prefer making skills self-heal old formats; document the healing here. |
 | `CONTRIBUTING.md` | Only if the contributor process itself changes. |
 
 `CONTRIBUTING.md` has the canonical version of this checklist — see "Updating documentation" there.
@@ -188,6 +199,10 @@ Every change updates documentation in the same commit (or short series) as the c
 - **Rebuild archives** after editing a skill source:
   ```bash
   make package        # rebuilds all six
+  ```
+- **Verify before done** — after any change to skills, archives, templates, or repo structure:
+  ```bash
+  make check          # frontmatter, guardrails, archive sync, key paths (CI runs this too)
   ```
 - **Install / update local skills** in Claude Code:
   ```bash
