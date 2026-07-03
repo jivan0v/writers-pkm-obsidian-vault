@@ -120,7 +120,8 @@ For each project under `01_Projects/`:
 1. Read `_meta/status.md` (create it if it doesn't exist yet)
 2. Check the modification timestamp of each story file against the timestamp recorded in `status.md` (see "Why timestamps, not dates" above)
 3. If a file is newer than its last recorded run timestamp, mark all four agents as `pending ⚠️` for that file
-4. Also check the Retroactive Re-checks section for any outstanding Warden queues
+4. **Reconcile standalone runs.** Warden, Quill, and Lens write only their reports — the writer may have run them directly, outside your pipeline, since your last run. For each agent still marked pending on a file, check the corresponding report (`_meta/warden/[file]_warden.md`, `_meta/quill/...`, `_meta/lens/...`): if the report's modification timestamp is **newer than the story file's**, the pending work is already done — mark the agent ✓ with the report's timestamp. For Atlas, do the same using the latest `atlas_history.md` entry: if its date is newer than the story file's timestamp and the file appears in that entry's "Files read" line, mark Atlas ✓. A report *older* than the story file stays pending — the writer revised after the review.
+5. Also check the Retroactive Re-checks section for any outstanding Warden queues
 
 If `status.md` doesn't exist yet for a project, create it and treat all files as new (all agents pending).
 
@@ -185,7 +186,7 @@ Next steps: open a /warden or /quill session to work through flagged items.
 
 ## Updating status.md
 
-Update `status.md` after every agent run. Keep it accurate — it is the single source of truth for what has and hasn't been reviewed.
+Update `status.md` after every agent run you orchestrate, and reconcile standalone runs from report evidence during every scan (Step 1.4). You are the only skill that writes per-file agent status — which means status is only as current as your last scan. Keep it accurate; the writer treats it as the source of truth for what has and hasn't been reviewed.
 
 The Retroactive Re-checks section is written by Atlas only. Ledger reads it to surface pending re-checks in the report; Ledger does not write to it.
 

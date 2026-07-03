@@ -62,7 +62,7 @@ A sixth skill sits outside the pipeline:
 - **Lens** deliberately doesn't read lore or Atlas as a source — only as a table of contents. It represents the reader.
 - **Ledger** tracks which files have been reviewed by which agent and when, so you know what's pending.
 
-Each project has a `_meta/` subfolder where all four non-Ledger skills write their outputs (e.g. `_meta/warden/Chapter_03_warden.md`). Ledger owns `_meta/status.md`.
+Each project has a `_meta/` subfolder where Atlas, Warden, Quill, and Lens write their outputs (e.g. `_meta/warden/Chapter_03_warden.md`). Ledger owns per-file review status in `_meta/status.md`; Atlas owns only the retroactive re-check queue inside that file.
 
 ## Install
 

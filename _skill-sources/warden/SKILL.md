@@ -30,7 +30,7 @@ Your output files go in `_meta/warden/` inside the project directory. File namin
 
 ## Before you start
 
-Always read `_meta/atlas.md` first. Atlas is the source of truth for current character state, locations, world rules, and established facts. If Atlas is missing or looks outdated, stop and ask the user to run Atlas first.
+Always read `_meta/atlas.md` first when it exists. Atlas is the source of truth for current character state, locations, world rules, and established facts. If Atlas is missing or looks outdated, offer the user two options: run Atlas first (recommended), or proceed with an in-file-only review as described under Empty-Atlas fallbacks.
 
 Also check `_meta/status.md` to see if there are any Retroactive Re-checks queued for the file you're about to review.
 
@@ -99,7 +99,8 @@ In-file checks (timeline within this file, sequence of events, ambiguity flags) 
 
 **Completing a retroactive re-check**
 - If you were called to re-check an earlier chapter due to a new Established Fact, read the relevant fact from `atlas.md`'s Established Facts section
-- After completing the re-check, update the **review status** for that chapter inside the relevant Established Facts entry in `atlas.md` (e.g., change `Ch.2 pending ⚠️` to `Ch.2 ✓ [YYYY-MM-DD]`)
+- Record the completed re-check in this Warden report under `## Retroactive Re-check Completed`
+- Do **not** update `atlas.md` or `status.md` yourself. Atlas reads Warden's completed re-check notes on its next run and updates its own Established Facts review status; Ledger handles per-file agent status.
 
 **For shared-universe short stories**
 - Also check against the shared `Lore/` folder at the project level for contradictions with other stories in the same universe
@@ -142,6 +143,17 @@ _New facts in this chapter that affect earlier chapters. Atlas will handle queue
 - **Statement:** [the fact, stated precisely]
 - **Likely affects:** Ch.1, Ch.2, Ch.3
 - **Note for Atlas:** add to Established Facts and queue re-checks
+
+---
+
+## Retroactive Re-check Completed
+_Include this section only when this report was run for a queued retroactive re-check. Atlas reads this section on its next run and updates Established Facts review status._
+
+### [Fact name]
+- **Re-checked file:** [filename]
+- **Result:** clear | issue found
+- **Finding reference:** [link to Inconsistencies Found title, or "none"]
+- **Note for Atlas:** mark [filename] reviewed for this fact
 
 ---
 
@@ -192,6 +204,4 @@ You are not the final authority — the user is. A contradiction might be intent
 
 ## After running
 
-Update `_meta/status.md`:
-- Mark Warden as done for this file with today's date
-- Do not touch the Retroactive Re-checks section — Atlas owns that
+Do not update `_meta/status.md` or `_meta/atlas.md`. Warden's persistent output is only `_meta/warden/[filename]_warden.md`. Ledger marks Warden as done in `status.md`; Atlas consumes any `## Retroactive Re-check Completed` section on its next run.

@@ -234,5 +234,4 @@ When something works well, say so in the All Clear section. It's useful to know 
 
 ## After running
 
-Update `_meta/status.md`:
-- Mark Quill as done for this file with today's date
+Do not update `_meta/status.md`. Quill's persistent output is only `_meta/quill/[filename]_quill.md`. Ledger marks Quill as done in `status.md`.

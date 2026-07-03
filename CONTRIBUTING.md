@@ -68,7 +68,7 @@ Open an issue with a draft entry that follows the existing roadmap item shape: t
    make check
    ```
 
-   It verifies frontmatter, the guardrails block, archive↔source sync, and key repo paths.
+   It verifies frontmatter, the guardrails block, ownership contracts, archive↔source sync, and key repo paths.
 
 ## Updating documentation
 

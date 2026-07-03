@@ -25,11 +25,11 @@ Every enhancement in this roadmap has to respect these:
 - `_meta/` convention per project for agent outputs.
 - `templates/` stubs (optional-everything) for `_meta/` and `Lore/` notes.
 - Editorial-only guardrails block at the top of every `SKILL.md`.
-- Two example notes.
+- Worked example project: a complete three-chapter standalone short story with populated Atlas, Lore notes, and sample Warden / Quill / Lens reports.
 - MIT licensed, genericized.
 - See [CHANGELOG.md](CHANGELOG.md) for shipped changes.
 
-Known limitations this roadmap still addresses: onboarding could go further (full example project), the pipeline is all-or-nothing, Obsidian features are under-leveraged, and shared-universe writing has only structural support so far.
+Known limitations this roadmap still addresses: the pipeline is all-or-nothing, Ledger still relies on timestamp-based detection, Obsidian features are under-leveraged, and shared-universe writing has only structural support so far.
 
 ---
 
@@ -138,8 +138,9 @@ Sharpen the existing skills without expanding scope.
 **Why:** Atlas re-reads every chapter and every Lore/ file on every run. For long novels this is expensive. Record `last fully ingested through: Ch.7 (date)` in `atlas_history.md`; subsequent runs ingest only changed/new chapters. `Lore/` is always re-read (it's the canonical source and small). Pairs with 3.5 — uses the same content-hash mechanism.
 **Depends on:** 3.5.
 
-### 3.7 Decouple Warden writes to `atlas.md` — M
+### 3.7 Decouple Warden writes to `atlas.md` — M — **Shipped**
 **Why:** Warden currently updates Established-Facts review status *inside* `atlas.md` — a hidden cross-skill write. If Atlas is rewriting the same file in the same session, that's a race. Refactor: Warden records completed re-checks in its own report; Atlas reads them on the next run and updates its own file. Removes a coupling and aligns with the project-wide rule that `_meta/` files are owned by exactly one skill.
+**Shipped:** Warden no longer writes `atlas.md` or `status.md`. It records completed retroactive re-checks in an optional `## Retroactive Re-check Completed` section of its report; Atlas reads those sections on its next run and updates Established Facts review status itself. Quill and Lens also now state that Ledger, not the report-writing skill, marks per-file agent status in `status.md`. To keep standalone (non-pipeline) runs from stranding status as pending, Ledger's scan reconciles from report evidence: a report newer than its story file marks that agent done.
 
 ### 3.8 Empty-Atlas fallbacks + provisional voice derivation — S — **Shipped**
 **Why:** Writer-led + minimal-by-default means Atlas may have empty Voice profiles, no Locations, no Established Facts. Today the consumer skills (Quill especially) silently skip those checks. Two changes:

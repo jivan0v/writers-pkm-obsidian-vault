@@ -20,7 +20,7 @@ This is a worked example for the Writer's PKM framework. It demonstrates:
 
 4. **Read the Warden output:** Open `_meta/warden/Chapter_03_warden.md`. This shows what Warden reports when it reviews a chapter. Notice that it:
    - Flags ambiguities as Questions (not errors)
-   - Offers multiple revision options, not prescriptions
+   - Suggests what to reconcile without drafting replacement prose
    - Acknowledges intentional choices (like the unnamed not-husband)
 
 5. **Read the Quill output:** Open `_meta/quill/Chapter_03_quill.md`. This shows how Quill critiques prose. Notice that:
@@ -37,7 +37,7 @@ This is a worked example for the Writer's PKM framework. It demonstrates:
 
 This story was chosen because it:
 
-- **Uses all three project types:** It's a standalone short story, not a novel (no multi-book Lore structure needed) and not a shared-universe collection (no parallel tales).
+- **Demonstrates one project type clearly:** It's a standalone short story with named sections, so the example stays small while still exercising Atlas, Warden, Quill, and Lens.
 - **Includes intentional craft choices:** The unnamed not-husband, Zara's precocious voice, the "fractured" metaphor—these are deliberate decisions for the skills to interact with.
 - **Shows realistic agent outputs:** The Warden, Quill, and Lens reports model what these skills actually produce. They're not perfect critiques; they're working-draft feedback.
 - **Demonstrates the framework without overwhelming:** Three short chapters means a reader can absorb the whole story and all its feedback in one sitting.

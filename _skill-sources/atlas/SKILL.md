@@ -33,7 +33,7 @@ Each project gets a `_meta/` folder. Projects sit flat under `01_Projects/` rega
     _meta/
       atlas.md            ← you maintain this (current state)
       atlas_history.md    ← you append to this (audit trail, never edit)
-      status.md           ← Ledger maintains this, do not modify
+      status.md           ← Ledger maintains this; Atlas owns only the Retroactive Re-checks section
       quill/              ← Quill writes here
       warden/             ← Warden writes here
       lens/               ← Lens writes here
@@ -120,7 +120,7 @@ Voice is the only Atlas field eligible for derivation from patterns. Every other
 
 ## Retroactive re-checks — Atlas is the sole owner
 
-When Atlas detects a new fact in a chapter that retroactively affects earlier chapters, Atlas is the **only** skill that writes to the Retroactive Re-checks section of `status.md`. Warden reports the detection in its own output file but does not write to `status.md` directly. When Warden completes a re-check, it updates the review status inside the Established Facts entry in `atlas.md` (e.g., `Ch.1 ✓`), not in `status.md`.
+When Atlas detects a new fact in a chapter that retroactively affects earlier chapters, Atlas is the **only** skill that writes to the Retroactive Re-checks section of `status.md`. Warden reports retroactive detections and completed re-checks in its own output files; it does not write to `status.md` or `atlas.md` directly. On each Atlas run, read any Warden reports containing `## Retroactive Re-check Completed`, then update the relevant Established Facts review status in `atlas.md` yourself (e.g., `Ch.1 ✓`).
 
 ## atlas.md structure
 
@@ -207,12 +207,13 @@ Append only. Never edit existing entries. Add a new block each session.
 ### Update after new writing
 1. Read the new or modified file(s)
 2. Read the current `atlas.md` and any relevant `Lore/` files. If the header uses legacy vocabulary or an older shape (e.g. `_Type: Shared-Universe Short_`, or a missing `_Type:` line), normalize it to the current structure as part of this update — headers self-heal, content is never dropped in the process
-3. Update characters, locations, threads, and world rules **in place**
-4. If any new fact retroactively affects earlier chapters:
+3. Read Warden reports with `## Retroactive Re-check Completed`; update Established Facts review status for matching facts/files, then leave the Warden reports intact
+4. Update characters, locations, threads, and world rules **in place**
+5. If any new fact retroactively affects earlier chapters:
    - Add it to Established Facts with review status pending for affected chapters
    - Add a re-check entry to `status.md` under Retroactive Re-checks (Atlas owns this)
-5. Append a new entry to `atlas_history.md`
-6. Report: what changed, and what re-checks (if any) were queued
+6. Append a new entry to `atlas_history.md`
+7. Report: what changed, what re-checks (if any) were queued, and which completed Warden re-checks were absorbed
 
 ### Answer a question about story state
 Read `atlas.md` and answer directly. If the answer isn't there, say so — do not invent from memory.

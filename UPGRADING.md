@@ -22,7 +22,7 @@ The `_meta/` files in your projects are agent-owned, and the updated skills know
 
 - **`status.md`** — Ledger upgrades entries to minute-precision timestamps (`YYYY-MM-DD HH:MM`) as it rewrites them. Old date-only entries are treated conservatively: any file modified on its recorded date counts as pending. **Expect your first `/ledger` run after upgrading to flag more files than usual** — that's deliberate, not a bug. Let the pipeline run once and the statuses settle.
 - **`atlas.md`** — Atlas normalizes legacy header vocabulary (e.g. `Shared-Universe Short` → `Shared-Universe Collection`) on its next update. Your facts, characters, and voice profiles are untouched.
-- **Warden / Quill / Lens reports** — regenerated wholesale on the next review of each file, in the current format: findings anchored to verbatim quotes instead of bare paragraph numbers, Lens's `_Read: cold / warm_` header, capped minor findings. Old reports aren't migrated — they're simply replaced when each file is next reviewed.
+- **Warden / Quill / Lens reports** — regenerated wholesale on the next review of each file, in the current format: findings anchored to verbatim quotes instead of bare paragraph numbers, Lens's `_Read: cold / warm_` header, capped minor findings. Warden retroactive re-check completions now live in Warden reports and are absorbed by Atlas on the next Atlas run instead of Warden editing `atlas.md` directly. Old reports aren't migrated — they're simply replaced when each file is next reviewed.
 
 Your manuscripts, `Lore/` files, and scratchpad are never touched by an upgrade. Only `_meta/` changes, and only through the skills.
 
@@ -48,6 +48,7 @@ The full record is in [CHANGELOG.md](CHANGELOG.md); the changes you'll actually 
 - **Collections are first-class.** Shared-universe collections get their own status tracking and are no longer mistaken for novels.
 - **Warden works without Atlas.** No Atlas yet? Warden offers an in-file-only review instead of refusing.
 - **Quill can suggest cutting things**, and has standing orders not to thesaurus-ify your plain words.
+- **Skill ownership is cleaner.** Warden, Quill, and Lens write reports only. Ledger marks per-file review status, and Atlas updates its own Established Facts review status from Warden's completed re-check notes.
 
 ## If something looks wrong
 

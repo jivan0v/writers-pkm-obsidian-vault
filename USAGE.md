@@ -260,6 +260,7 @@ Ready to run pipeline? (yes / specify which / skip)
 - "Warden re-check pending (X)" means Atlas noticed a fact you established in a later chapter that might affect earlier ones, and Warden needs to look at the affected chapters again. (See [Retroactive facts](#retroactive-facts) under the Atlas section.)
 - "Up to date ✓" means nothing has changed since the last run for that file.
 - You can ask Ledger to run only specific assistants. *"Just Warden"* is a perfectly valid response. So is *"only Quill on Chapter_03"*.
+- Running a skill directly (outside Ledger) is fine too. The skills only write their reports; the next `/ledger` scan notices any report newer than your chapter and marks that review done — no double work.
 - Ledger never edits your story files. It only reads modification times and updates its own status file.
 
 ---
@@ -362,6 +363,8 @@ You don't have to do anything special — just write whatever you write. The sys
 ```
 
 **Things you should know:**
+
+Warden writes only its own report under `_meta/warden/`. If Warden was run for a retroactive re-check, it records the completed check in that report; Atlas absorbs that note on its next run and updates `atlas.md` itself. Ledger marks Warden as done in `status.md`.
 
 #### Severity tiers — three of them
 
@@ -654,7 +657,7 @@ Every project has a `_meta/` folder. The skills write all their outputs there.
 _meta/
 ├── atlas.md             ← Atlas writes this
 ├── atlas_history.md     ← Atlas appends here (audit trail)
-├── status.md            ← Ledger writes this
+├── status.md            ← Ledger writes per-file status; Atlas owns the Retroactive Re-checks section
 ├── quill/
 │   ├── config.yml       ← OPTIONAL, you write this
 │   └── Chapter_03_quill.md  ← Quill writes these
@@ -840,6 +843,8 @@ If the line is missing, no skip zones were detected (or you used the wrong marke
 **Quill** — The prose-and-grammar skill.
 
 **Retroactive fact** — A fact established in a later chapter that affects earlier ones. Atlas catches these and queues affected chapters for Warden re-check.
+
+**Retroactive re-check** — A Warden pass on an earlier chapter after a later fact changes context. Warden records the result in its report; Atlas updates its own review status on the next run.
 
 **Severity** *(Warden)* — One of `Major`, `Minor`, `Question`. Question is the *"is this intentional?"* tier.
 

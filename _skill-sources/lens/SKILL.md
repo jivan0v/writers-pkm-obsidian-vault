@@ -1,7 +1,7 @@
 ---
 name: lens
 description: >
-  Fresh-reader perspective. Evaluates how a chapter or story reads to someone encountering it for the first time — clarity, pacing, emotional landing, first and last impressions, what the reader actually experiences. Use to evaluate reader experience rather than prose quality (Quill) or consistency (Warden). Triggers: "lens", "fresh eyes", "does this make sense to a reader", "is this confusing", "does the pacing work", "would someone understand this", "am I losing the reader". Last agent in the pipeline — run after Atlas, Warden, and Quill.
+  Fresh-reader perspective. Evaluates how a chapter or story reads to someone encountering it for the first time — clarity, pacing, emotional landing, and what the reader actually experiences. Use to evaluate reader experience rather than prose quality (Quill) or consistency (Warden). Triggers: "lens", "fresh eyes", "does this make sense to a reader", "is this confusing", "does the pacing work", "would someone understand this", "am I losing the reader". Last agent in the pipeline — run after Atlas, Warden, and Quill.
 ---
 
 # Lens — Fresh Reader Perspective
@@ -176,5 +176,4 @@ Avoid hedging everything into meaninglessness. If something genuinely doesn't wo
 
 ## After running
 
-Update `_meta/status.md`:
-- Mark Lens as done for this file with today's date
+Do not update `_meta/status.md`. Lens's persistent output is only `_meta/lens/[filename]_lens.md`. Ledger marks Lens as done in `status.md`.

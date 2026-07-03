@@ -142,6 +142,7 @@ What's actually shipped (see `CHANGELOG.md` Unreleased and `ROADMAP.md` for the 
 - 3.8 Empty-Atlas fallbacks across consumer skills + Atlas provisional voice derivation (`[provisional, derived from Ch.X–Y]`)
 - 3.9 Skip-zone marker convention (`<!-- skip-start --> ... <!-- skip-end -->` plus skill-specific variants; Lens deliberately ignores them)
 - 3.10 Quote-anchored findings (verbatim first-words quote + ¶ number) across Warden/Quill/Lens
+- 3.7 Warden no longer writes `atlas.md`; completed retroactive re-checks are reported by Warden and absorbed by Atlas on the next run
 - Skill-quality pass (2026-07-03): Lens cold/warm read disclosure + Ledger runs Lens in a fresh subagent; Lens collection reading-order stance; Warden in-file-only mode when Atlas absent; Warden/Lens minor-finding caps; Quill may suggest cuts + anti-thesaurus/anti-machine-tics section
 
 **Public-repo polish (Tier 6) — mostly complete**
@@ -152,7 +153,7 @@ What's actually shipped (see `CHANGELOG.md` Unreleased and `ROADMAP.md` for the 
 - 6.5 Tightened `description:` frontmatter across all six skills (consistent four-part shape: what / when / Triggers list / sequencing note)
 - 6.6 Atlas `SKILL.md` path-diagram fix
 - 6.7 `USAGE.md` writer's handbook
-- `make check` structural lint + CI workflow (`.github/workflows/check.yml`) — verifies skill frontmatter, guardrails blocks, archive↔source sync, key paths
+- `make check` structural lint + CI workflow (`.github/workflows/check.yml`) — verifies skill frontmatter, guardrails blocks, ownership contracts, archive↔source sync, key paths
 - `AGENTS.md` bootstrap pointer at the top of `CLAUDE.md`; `.gitattributes` for `*.skill`
 
 `01_Projects/Example - A City That Forgets/` is the only populated project. `02_Research/` is empty (`.gitkeep` only).
@@ -163,12 +164,12 @@ Tier-by-tier remaining work, lowest-dependency first within each:
 
 1. **Foundations** — *fully shipped.*
 2. **Pipeline flexibility** — 2.1 Pipeline Modes (Draft / Continuity / Polish / Full Audit) [unlocks 2.5 + 2.7 pipeline integration]; 2.2 Warden options + impact scope; 2.3 `/wrap` session-end skill; 2.4 Ledger dashboard refinement; 2.5 acknowledgement convention [depends on 3.10].
-3. **Atlas + skill refinements** — 3.1 temporal voice evolution; 3.2 short-story/novel handling alignment; 3.3 output file accumulation policy; 3.4 multi-language personalization pattern; 3.5 Ledger reliability remainder (content-hash detection, deletion handling) [unlocks 3.6]; 3.6 Atlas watermark + incremental ingest [depends on 3.5, unlocks 3.12]; 3.7 decouple Warden→`atlas.md` writes; 3.11 Lens first/last impression + genre signaling; 3.12 Atlas moments index [depends on 3.6]. (3.10 shipped.)
+3. **Atlas + skill refinements** — 3.1 temporal voice evolution; 3.2 short-story/novel handling alignment; 3.3 output file accumulation policy; 3.4 multi-language personalization pattern; 3.5 Ledger reliability remainder (content-hash detection, deletion handling) [unlocks 3.6]; 3.6 Atlas watermark + incremental ingest [depends on 3.5, unlocks 3.12]; 3.11 Lens first/last impression + genre signaling; 3.12 Atlas moments index [depends on 3.6]. (3.7 and 3.10 shipped.)
 4. **Obsidian leverage** — 4.1 YAML frontmatter + Dataview dashboards; 4.2 opinionated default `.obsidian/` config; 4.3 Templater note templates [depends on 4.2]; 4.4 daily-notes integration [depends on 2.3 + 4.2].
 5. **Shared-universe architecture** — 5.1 `03_Universe_Atlas/` with dual ingestion; 5.2 promotion pipeline [depends on 5.1].
 6. **Public-repo polish** — 6.3 per-skill `version:` frontmatter (CHANGELOG already shipped).
 
-**Suggested next thread:** Tier 3 small items first (3.5 → 3.6 → 3.10 chain) since they're foundational refinements that unblock several downstream items. Tier 2.1 (Pipeline Modes) is the next biggest payoff but is **M**-sized.
+**Suggested next thread:** Tier 3 reliability first (3.5 → 3.6 → 3.12 chain) since content hashes and incremental ingest unblock several downstream items. Tier 2.1 (Pipeline Modes) is the next biggest writer-facing payoff but is **M**-sized.
 
 Parked (not planned): research-folder integration, Lens reader profiles, automated skill tests, external-source import (Scrivener / Google Docs / plain text), AI-drafting support (violates principle #1).
 
@@ -202,7 +203,7 @@ Every change updates documentation in the same commit (or short series) as the c
   ```
 - **Verify before done** — after any change to skills, archives, templates, or repo structure:
   ```bash
-  make check          # frontmatter, guardrails, archive sync, key paths (CI runs this too)
+  make check          # frontmatter, guardrails, ownership contracts, archive sync, key paths (CI runs this too)
   ```
 - **Install / update local skills** in Claude Code:
   ```bash

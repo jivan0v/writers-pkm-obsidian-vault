@@ -10,7 +10,7 @@ help:
 	@echo "                       (override with: make install SKILLS_DIR=/path)"
 	@echo "  make package         Rebuild every <skill>.skill archive from _skill-sources/"
 	@echo "  make clean-archives  Remove every <skill>.skill archive at the repo root"
-	@echo "  make check           Structural lint: frontmatter, guardrails, archive sync, key paths"
+	@echo "  make check           Structural lint: frontmatter, guardrails, ownership contracts, archive sync, key paths"
 	@echo "  make help            Show this message"
 
 install:
@@ -53,13 +53,22 @@ check:
 			echo "FAIL  $$skill: $$skill.skill archive missing (run 'make package')"; fail=1; \
 		fi; \
 	done; \
+	for skill in warden quill lens; do \
+		src="_skill-sources/$$skill/SKILL.md"; \
+		if grep -q 'Update `_meta/status.md`' "$$src"; then \
+			echo "FAIL  $$skill: non-Ledger skill must not update _meta/status.md"; fail=1; \
+		fi; \
+	done; \
+	if grep -q 'update the \*\*review status\*\*.*atlas.md' "_skill-sources/warden/SKILL.md"; then \
+		echo "FAIL  warden: Warden must report completed re-checks, not update atlas.md"; fail=1; \
+	fi; \
 	for path in "templates/_meta/atlas.md" "templates/_meta/status.md" "templates/Lore" \
 			"Obsidian/Working Title/00_Scratchpad" "Obsidian/Working Title/01_Projects" \
 			"Obsidian/Working Title/02_Research" "AGENTS.md" "USAGE.md" "UPGRADING.md" "ROADMAP.md" "CHANGELOG.md"; do \
 		[ -e "$$path" ] || { echo "FAIL  key path missing: $$path"; fail=1; }; \
 	done; \
 	if [ "$$fail" -eq 0 ]; then \
-		echo "OK    $(words $(SKILLS)) skills: frontmatter, guardrails, archive sync"; \
+		echo "OK    $(words $(SKILLS)) skills: frontmatter, guardrails, ownership contracts, archive sync"; \
 		echo "OK    key paths present"; \
 	else \
 		echo ""; echo "make check failed."; exit 1; \
